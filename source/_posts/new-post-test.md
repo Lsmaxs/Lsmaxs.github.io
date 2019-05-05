@@ -8,6 +8,6 @@ tags:
 ## hello
 
 ```
- document.writer(' welcome Sean_Blog')
+ document.writer(' welcome Sean_Blog1')
 
 ```
