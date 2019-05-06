@@ -31,3 +31,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit 
 ![](/images/common/log.jpg)
 
 {% asset_img example.jpg This is an example image %}
+
+<% for (var link in site.data.menu) { %>
+  <a href="<%= site.data.menu[link] %>"> <%= link %> </a>
+<% } %>
