@@ -78,4 +78,6 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: gitPush
+  repo: https://github.com/Lsmaxs/Lsmaxs.github.io.git
+  branch: master
