@@ -16,12 +16,6 @@ eval("I AM IRON MAN");
 
 ```
 
-姓名|技能|排行
---|:--:| --:
-刘备|哭|大哥
-关羽|打|二哥
-张飞|骂|三弟
-
 {% codeblock _.compact http://underscorejs.org/#compact Underscore.js %}
 _.compact([0, 1, false, 2, '', 3]);
 => [1, 2, 3]
