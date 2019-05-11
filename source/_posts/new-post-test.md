@@ -11,3 +11,11 @@ tags:
  document.writer(' welcome Sean_Blog1')
 
 ```
+
+```
+    const name = 'hexo'
+    function init(){
+        alert( 'welcome' + name )
+    }
+    init();
+```

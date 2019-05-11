@@ -1,0 +1,49 @@
+language: node_js
+node_js: stable
+
+# assign build branches
+branches:
+  only:
+    - hexo
+
+# cache this directory
+cache:
+  directories:
+    - node_modules
+
+# S: Build Lifecycle
+before_install:
+#  - openssl aes-256-cbc -K $encrypted_5e9b2e7299ba_key -iv $encrypted_5e9b2e7299ba_iv -in ./.travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+#  - chmod 600 ~/.ssh/id_rsa
+#  - eval $(ssh-agent)
+#  - ssh-add ~/.ssh/id_rsa
+#  - cp .travis/ssh_config ~/.ssh/config
+  - npm install -g hexo-cli # 安装 hexo
+  - git clone https://github.com/theme-next/hexo-theme-next.git themes/next
+
+install:
+  - npm install  #安装hexo及插件
+
+script:
+  - hexo cl  #清除
+  - hexo g  #生成
+#   - hexo d  #发布
+
+after_script:
+  - git clone https://${GH_REF} .deploy_git
+  - cd .deploy_git
+  - git checkout master
+  - cd ../
+  - mv .deploy_git/.git/ ./public/
+  - cd ./public
+#  - git init
+  - git config user.name "Lsmaxs"  #修改name
+  - git config user.email "shuan934321631@qq.com"  #修改email
+  - git add .
+  - git commit -m "Travis CI Auto Update Docs"
+  - git push --force --quiet "https://${Travis_Token}@${GH_REF}" master:master  #GH_TOKEN是在Travis中配置token的名称
+
+env:
+ global:
+   - GH_REF: github.com/Lsmaxs/Lsmaxs.github.io.git  #设置GH_REF，注意更改yourname
+ #  - hexo_token: Travis_Token
