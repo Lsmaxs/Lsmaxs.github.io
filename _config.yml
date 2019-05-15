@@ -100,10 +100,12 @@ live2d:
     # use: ./wives/wanko # 相对于博客根目录的路径
     # use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url
   display:
-    position: left
+    position: right
     width: 200
     height: 400
   mobile:
     show: false
   react:
+    opacityDefault: 0.7
+    opacityOnHover: 0.2
     opacity: 0.8
