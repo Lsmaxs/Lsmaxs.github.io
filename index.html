@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/stacker/async/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -306,7 +306,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/21/stacker/async/" class="post-title-link" itemprop="url">全栈成长之Async</a>
+                <a href="/2019/05/22/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
               
             
           </h1>
@@ -331,13 +331,9 @@
                 
               
 
-              <time title="Created: 2019-05-21 15:26:39 / Modified: 12:34:14" itemprop="dateCreated datePublished" datetime="2019-05-21T15:26:39+00:00">2019-05-21</time>
+              <time title="Created: 2019-05-22 03:48:46" itemprop="dateCreated datePublished" datetime="2019-05-22T03:48:46+00:00">2019-05-22</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -372,29 +368,15 @@
       
         
           
-            <h1 id="JavaScript-异步"><a href="#JavaScript-异步" class="headerlink" title="JavaScript 异步"></a>JavaScript 异步</h1><h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><ul>
-<li><strong>‘异步’</strong>-简单来说就是吧任务分为两段，先执行第一段先前段，然后转而执行其他任务，等准备好了，再回过头执行第一段后半段的回调。  </li>
-<li><p>比如：执行文件读取任务，异步如下：<br><img src="../../images/stacker/asyncfunc1.png" alt="ASYNC1"></p>
-</li>
-<li><p>这种不连续的执行，就叫做 <strong>异步</strong>。相应的，连续的执行，叫做 <strong>同步</strong><br><img src="../../images/stacker/syncfunc2.png" alt="ASYNC2"></p>
-</li>
-</ul>
-<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>函数作为一等公民，可以作为参数和返回值。</p>
-<h3 id="可以用于批量生成函数"><a href="#可以用于批量生成函数" class="headerlink" title="可以用于批量生成函数"></a>可以用于批量生成函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let toString = Object.prototype.toString;</span><br><span class="line">let isString = obj =&gt; toString.call(obj) == `[object String]`</span><br><span class="line">let isArray = obj =&gt; toString.call(obj) == `[object Array]`</span><br><span class="line">let isType = type =&gt; obj =&gt; Object.prototype.toString.call(obj) == `[object $&#123;type&#125;]`;</span><br></pre></td></tr></table></figure>
-<h3 id="可以用于需要调用多次才执行的函数"><a href="#可以用于需要调用多次才执行的函数" class="headerlink" title="可以用于需要调用多次才执行的函数"></a>可以用于需要调用多次才执行的函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let after = (time,task)=&gt; () =&gt; &#123;</span><br><span class="line">    if(times--==1)&#123;</span><br><span class="line">        return task.apply(this,arguments)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let fn = after(4,()=&gt;console.log(&apos;hello guys&apos;));</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
-<h2 id="异步语法目标"><a href="#异步语法目标" class="headerlink" title="异步语法目标"></a>异步语法目标</h2><blockquote>
-<p>异步编程的语法目标，就是怎样让它更像同步编程  </p>
-</blockquote>
-<ul>
-<li>回调函数实现</li>
-<li>事件监听</li>
-<li>发布订阅</li>
-<li>Promise / Genterator</li>
-<li>Asycn / await  </li>
-</ul>
-<h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2><p>所谓的回调函数，就是把任务第二段需要执行的函数单独写到一个函数中，等到回头执行这个任务时，就直接调用这个函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile( &apos;某个文件&apos;, (err,data)=&gt;&#123;</span><br><span class="line">    if(err) throw err;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">这是一个错误优先处理的回调函数(ERROR-FIRST CALLBACKS),这个也是`Node.js`本身的特色之一。</span><br><span class="line"></span><br><span class="line">## 回调的问题  </span><br><span class="line">### 异常处理</span><br></pre></td></tr></table></figure>
-<p><code>`</code></p>
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
         
@@ -451,7 +433,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/stacker/async/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -471,7 +453,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/21/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+                <a href="/2019/05/21/stacker/async/" class="post-title-link" itemprop="url">全栈成长之Async</a>
               
             
           </h1>
@@ -496,9 +478,25 @@
                 
               
 
-              <time title="Created: 2019-05-21 12:34:14" itemprop="dateCreated datePublished" datetime="2019-05-21T12:34:14+00:00">2019-05-21</time>
+              <time title="Created: 2019-05-21 15:26:39" itemprop="dateCreated datePublished" datetime="2019-05-21T15:26:39+00:00">2019-05-21</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-22 03:48:46" itemprop="dateModified" datetime="2019-05-22T03:48:46+00:00">2019-05-22</time>
+              
             
           </span>
 
@@ -533,15 +531,39 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h1 id="JavaScript-异步"><a href="#JavaScript-异步" class="headerlink" title="JavaScript 异步"></a>JavaScript 异步</h1><h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><ul>
+<li><strong>‘异步’</strong>-简单来说就是吧任务分为两段，先执行第一段先前段，然后转而执行其他任务，等准备好了，再回过头执行第一段后半段的回调。  </li>
+<li><p>比如：执行文件读取任务，异步如下：<br><img src="../../images/stacker/asyncfunc1.png" alt="ASYNC1"></p>
+</li>
+<li><p>这种不连续的执行，就叫做 <strong>异步</strong>。相应的，连续的执行，叫做 <strong>同步</strong><br><img src="../../images/stacker/syncfunc2.png" alt="ASYNC2"></p>
+</li>
+</ul>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>函数作为一等公民，可以作为参数和返回值。</p>
+<h3 id="可以用于批量生成函数"><a href="#可以用于批量生成函数" class="headerlink" title="可以用于批量生成函数"></a>可以用于批量生成函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let toString = Object.prototype.toString;</span><br><span class="line">let isString = obj =&gt; toString.call(obj) == `[object String]`</span><br><span class="line">let isArray = obj =&gt; toString.call(obj) == `[object Array]`</span><br><span class="line">let isType = type =&gt; obj =&gt; Object.prototype.toString.call(obj) == `[object $&#123;type&#125;]`;</span><br></pre></td></tr></table></figure>
+<h3 id="可以用于需要调用多次才执行的函数"><a href="#可以用于需要调用多次才执行的函数" class="headerlink" title="可以用于需要调用多次才执行的函数"></a>可以用于需要调用多次才执行的函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let after = (time,task)=&gt; () =&gt; &#123;</span><br><span class="line">    if(times--==1)&#123;</span><br><span class="line">        return task.apply(this,arguments)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let fn = after(4,()=&gt;console.log(&apos;hello guys&apos;));</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+<h2 id="异步语法目标"><a href="#异步语法目标" class="headerlink" title="异步语法目标"></a>异步语法目标</h2><blockquote>
+<p>异步编程的语法目标，就是怎样让它更像同步编程  </p>
+</blockquote>
+<ul>
+<li>回调函数实现</li>
+<li>事件监听</li>
+<li>发布订阅</li>
+<li>Promise / Genterator</li>
+<li>Asycn / await  </li>
+</ul>
+<h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2><p>所谓的回调函数，就是把任务第二段需要执行的函数单独写到一个函数中，等到回头执行这个任务时，就直接调用这个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile( &apos;某个文件&apos;, (err,data)=&gt;&#123;</span><br><span class="line">    if(err) throw err;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">这是一个错误优先处理的回调函数(ERROR-FIRST CALLBACKS),这个也是`Node.js`本身的特色之一。</span><br><span class="line"></span><br><span class="line">## 回调的问题  </span><br><span class="line"></span><br><span class="line">### 异常处理</span><br></pre></td></tr></table></figure>
+<p>try{<br>    // xxx<br>} catch(err){<br>    // TODO<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">异步代码时 `try catch` 不在生效</span><br></pre></td></tr></table></figure></p>
+<p>let async = callBack =&gt; {<br>    try{<br>        setTimeout(()=&gt;{ callBack();},1000)<br>    } catch (err) {<br>        console.log(‘捕获错误’, e)<br>    }<br>}</p>
+<p>async(()=&gt;{console.log(t)});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">因为这个回调函数被封存了起来，直到下一个事件环的时候才会取出，`try`只能捕获当前循环内的异常，对于callBack异步无能为力。  </span><br><span class="line"></span><br><span class="line">`Node`在处理异常有一个约定，将异常作为回调的第一实参传回，如果为空表示没有出错。</span><br></pre></td></tr></table></figure></p>
+<p>async ((err,callBack)=&gt;{<br>    if(err){<br>        console.log(err);<br>    }<br>})</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">异步方法也要遵循两个原则  </span><br><span class="line">- 必须在异步之后调用传入的回调函数</span><br><span class="line">- 如果出错了要向回调函数传入异常供调用者判断</span><br></pre></td></tr></table></figure>
+<p>let async = callBack =&gt; {<br>    try{<br>        setTimeout(()=&gt;{<br>            if(success){<br>                callBack(null)<br>            }else{<br>                callBack(‘错误’);<br>            }<br>        })<br>    } catch(err){<br>        console.log(‘捕获错误’,e)<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 回调地狱</span><br><span class="line">异步多级依赖的情况下会导致嵌套非常深，代码难以阅读和维护</span><br></pre></td></tr></table></figure>
+<p>let fs = require(‘fs’);<br>fs.readFile(‘template.txt’,’utf8’,(err,template)=&gt;{<br>    fs.readFile(‘data.txt’,’urf8’,(err,data)=&gt;{<br>        console.log(<code>${template}:${data}</code>)<br>    })<br>})</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## 异步流程解决方案</span><br><span class="line"></span><br><span class="line">### 事件发布 / 订阅模式  </span><br><span class="line">订阅事件实现了一个事件和多个回调函数的关联</span><br></pre></td></tr></table></figure>
+<p>let fs = require(‘fs);<br>let EventEmitter = require(‘events);<br>let eve = new EventEmiter();<br>let html = {};<br>eve.on(‘ready’,(key,value)=&gt;{<br>    html[key] = value;<br>    if( Object.keys(html).length ==2 ) {<br>        console.log(html);<br>    }<br>})<br>function render(){<br>    fs.readFile(‘template.txt’,’utf8’,(err,tempalte)=&gt;{<br>        eve.emit(‘ready’,’template’,tempalte)<br>    })<br>    fs.readFile(‘data.txt’,’utf8’,(err,data)=&gt;{<br>        eve.emit(‘ready’,’data’,data)<br>    })<br>}<br>render();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 哨兵变量</span><br></pre></td></tr></table></figure></p>
+<p>let fs = require(‘fs’);<br>let after = (times,callBack)=&gt;{<br>    let result = {};<br>    return (key,value) =&gt; {<br>        result[key] = value;<br>        if(Object.keys(result).length == times){<br>            callBack(result);<br>        }<br>    }<br>}<br><code>`</code></p>
 
           
         
@@ -660,7 +682,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-21 12:34:14" itemprop="dateModified" datetime="2019-05-21T12:34:14+00:00">2019-05-21</time>
+                <time title="Modified: 2019-05-22 03:48:46" itemprop="dateModified" datetime="2019-05-22T03:48:46+00:00">2019-05-22</time>
               
             
           </span>
@@ -882,7 +904,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-21 12:34:14" itemprop="dateModified" datetime="2019-05-21T12:34:14+00:00">2019-05-21</time>
+                <time title="Modified: 2019-05-22 03:48:46" itemprop="dateModified" datetime="2019-05-22T03:48:46+00:00">2019-05-22</time>
               
             
           </span>
@@ -1039,7 +1061,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-21 12:34:14" itemprop="dateModified" datetime="2019-05-21T12:34:14+00:00">2019-05-21</time>
+                <time title="Modified: 2019-05-22 03:48:46" itemprop="dateModified" datetime="2019-05-22T03:48:46+00:00">2019-05-22</time>
               
             
           </span>

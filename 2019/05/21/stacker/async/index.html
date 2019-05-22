@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/21/images/stacker/asyncfunc1.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/21/images/stacker/syncfunc2.png">
-<meta property="og:updated_time" content="2019-05-21T12:34:14.116Z">
+<meta property="og:updated_time" content="2019-05-22T03:48:46.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之Async">
 <meta name="twitter:description" content="JavaScript 异步异步 ‘异步’-简单来说就是吧任务分为两段，先执行第一段先前段，然后转而执行其他任务，等准备好了，再回过头执行第一段后半段的回调。   比如：执行文件读取任务，异步如下：  这种不连续的执行，就叫做 异步。相应的，连续的执行，叫做 同步   高阶函数函数作为一等公民，可以作为参数和返回值。 可以用于批量生成函数1234let toString = Object.proto">
@@ -336,12 +336,24 @@
                 
               
 
-              <time title="Created: 2019-05-21 15:26:39 / Modified: 12:34:14" itemprop="dateCreated datePublished" datetime="2019-05-21T15:26:39+00:00">2019-05-21</time>
+              <time title="Created: 2019-05-21 15:26:39" itemprop="dateCreated datePublished" datetime="2019-05-21T15:26:39+00:00">2019-05-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-22 03:48:46" itemprop="dateModified" datetime="2019-05-22T03:48:46+00:00">2019-05-22</time>
               
             
           </span>
@@ -396,8 +408,18 @@
 <li>Asycn / await  </li>
 </ul>
 <h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2><p>所谓的回调函数，就是把任务第二段需要执行的函数单独写到一个函数中，等到回头执行这个任务时，就直接调用这个函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile( &apos;某个文件&apos;, (err,data)=&gt;&#123;</span><br><span class="line">    if(err) throw err;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">这是一个错误优先处理的回调函数(ERROR-FIRST CALLBACKS),这个也是`Node.js`本身的特色之一。</span><br><span class="line"></span><br><span class="line">## 回调的问题  </span><br><span class="line">### 异常处理</span><br></pre></td></tr></table></figure>
-<p><code>`</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile( &apos;某个文件&apos;, (err,data)=&gt;&#123;</span><br><span class="line">    if(err) throw err;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">这是一个错误优先处理的回调函数(ERROR-FIRST CALLBACKS),这个也是`Node.js`本身的特色之一。</span><br><span class="line"></span><br><span class="line">## 回调的问题  </span><br><span class="line"></span><br><span class="line">### 异常处理</span><br></pre></td></tr></table></figure>
+<p>try{<br>    // xxx<br>} catch(err){<br>    // TODO<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">异步代码时 `try catch` 不在生效</span><br></pre></td></tr></table></figure></p>
+<p>let async = callBack =&gt; {<br>    try{<br>        setTimeout(()=&gt;{ callBack();},1000)<br>    } catch (err) {<br>        console.log(‘捕获错误’, e)<br>    }<br>}</p>
+<p>async(()=&gt;{console.log(t)});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">因为这个回调函数被封存了起来，直到下一个事件环的时候才会取出，`try`只能捕获当前循环内的异常，对于callBack异步无能为力。  </span><br><span class="line"></span><br><span class="line">`Node`在处理异常有一个约定，将异常作为回调的第一实参传回，如果为空表示没有出错。</span><br></pre></td></tr></table></figure></p>
+<p>async ((err,callBack)=&gt;{<br>    if(err){<br>        console.log(err);<br>    }<br>})</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">异步方法也要遵循两个原则  </span><br><span class="line">- 必须在异步之后调用传入的回调函数</span><br><span class="line">- 如果出错了要向回调函数传入异常供调用者判断</span><br></pre></td></tr></table></figure>
+<p>let async = callBack =&gt; {<br>    try{<br>        setTimeout(()=&gt;{<br>            if(success){<br>                callBack(null)<br>            }else{<br>                callBack(‘错误’);<br>            }<br>        })<br>    } catch(err){<br>        console.log(‘捕获错误’,e)<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 回调地狱</span><br><span class="line">异步多级依赖的情况下会导致嵌套非常深，代码难以阅读和维护</span><br></pre></td></tr></table></figure>
+<p>let fs = require(‘fs’);<br>fs.readFile(‘template.txt’,’utf8’,(err,template)=&gt;{<br>    fs.readFile(‘data.txt’,’urf8’,(err,data)=&gt;{<br>        console.log(<code>${template}:${data}</code>)<br>    })<br>})</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## 异步流程解决方案</span><br><span class="line"></span><br><span class="line">### 事件发布 / 订阅模式  </span><br><span class="line">订阅事件实现了一个事件和多个回调函数的关联</span><br></pre></td></tr></table></figure>
+<p>let fs = require(‘fs);<br>let EventEmitter = require(‘events);<br>let eve = new EventEmiter();<br>let html = {};<br>eve.on(‘ready’,(key,value)=&gt;{<br>    html[key] = value;<br>    if( Object.keys(html).length ==2 ) {<br>        console.log(html);<br>    }<br>})<br>function render(){<br>    fs.readFile(‘template.txt’,’utf8’,(err,tempalte)=&gt;{<br>        eve.emit(‘ready’,’template’,tempalte)<br>    })<br>    fs.readFile(‘data.txt’,’utf8’,(err,data)=&gt;{<br>        eve.emit(‘ready’,’data’,data)<br>    })<br>}<br>render();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 哨兵变量</span><br></pre></td></tr></table></figure></p>
+<p>let fs = require(‘fs’);<br>let after = (times,callBack)=&gt;{<br>    let result = {};<br>    return (key,value) =&gt; {<br>        result[key] = value;<br>        if(Object.keys(result).length == times){<br>            callBack(result);<br>        }<br>    }<br>}<br><code>`</code></p>
 
       
     </div>
@@ -434,8 +456,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/21/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/05/17/md-lanc/" rel="next" title="Markdown 语法">
+                <i class="fa fa-chevron-left"></i> Markdown 语法
               </a>
             
           </div>
@@ -443,6 +465,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/22/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
