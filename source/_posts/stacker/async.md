@@ -66,9 +66,110 @@ fs.readFile( '某个文件', (err,data)=>{
 这是一个错误优先处理的回调函数(ERROR-FIRST CALLBACKS),这个也是`Node.js`本身的特色之一。
 
 ## 回调的问题  
+
 ### 异常处理  
 ```
+try{
+    // xxx
+} catch(err){
+    // TODO
+}
+```  
+异步代码时 `try catch` 不在生效  
+```
+let async = callBack => {
+    try{
+        setTimeout(()=>{ callBack();},1000)
+    } catch (err) {
+        console.log('捕获错误', e)
+    }
+}
 
+async(()=>{console.log(t)});
+```
+因为这个回调函数被封存了起来，直到下一个事件环的时候才会取出，`try`只能捕获当前循环内的异常，对于callBack异步无能为力。  
+
+`Node`在处理异常有一个约定，将异常作为回调的第一实参传回，如果为空表示没有出错。
+
+```
+async ((err,callBack)=>{
+    if(err){
+        console.log(err);
+    }
+})
+
+```  
+异步方法也要遵循两个原则  
+- 必须在异步之后调用传入的回调函数
+- 如果出错了要向回调函数传入异常供调用者判断
+```
+let async = callBack => {
+    try{
+        setTimeout(()=>{
+            if(success){
+                callBack(null)
+            }else{
+                callBack('错误');
+            }
+        })
+    } catch(err){
+        console.log('捕获错误',e)
+    }
+}
 
 ```
 
+### 回调地狱
+异步多级依赖的情况下会导致嵌套非常深，代码难以阅读和维护
+
+```
+let fs = require('fs');
+fs.readFile('template.txt','utf8',(err,template)=>{
+    fs.readFile('data.txt','urf8',(err,data)=>{
+        console.log(`${template}:${data}`)
+    })
+})
+
+```
+
+
+## 异步流程解决方案
+
+### 事件发布 / 订阅模式  
+订阅事件实现了一个事件和多个回调函数的关联
+```
+let fs = require('fs);
+let EventEmitter = require('events);
+let eve = new EventEmiter();
+let html = {};
+eve.on('ready',(key,value)=>{
+    html[key] = value;
+    if( Object.keys(html).length ==2 ) {
+        console.log(html);
+    }
+})
+function render(){
+    fs.readFile('template.txt','utf8',(err,tempalte)=>{
+        eve.emit('ready','template',tempalte)
+    })
+    fs.readFile('data.txt','utf8',(err,data)=>{
+        eve.emit('ready','data',data)
+    })
+}
+render();
+```
+
+### 哨兵变量
+
+```
+let fs = require('fs');
+let after = (times,callBack)=>{
+    let result = {};
+    return (key,value) => {
+        result[key] = value;
+        if(Object.keys(result).length == times){
+            callBack(result);
+        }
+    }
+}
+```
