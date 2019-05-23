@@ -5,4 +5,5 @@ tags: Node
 ---
 
 # Theme swtich
->  It is a dome that hexo switch Theme
+
+> It is a dome that hexo switch Theme

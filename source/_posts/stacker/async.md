@@ -27,7 +27,6 @@ let isString = obj => toString.call(obj) == `[object String]`
 let isArray = obj => toString.call(obj) == `[object Array]`
 let isType = type => obj => Object.prototype.toString.call(obj) == `[object ${type}]`;
 
-
 ```
 
 ### 可以用于需要调用多次才执行的函数
