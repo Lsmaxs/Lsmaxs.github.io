@@ -109,3 +109,64 @@ import {name} from './person.js';
 export const name = 'zfpx';
 ```
 ES6 模块虽然是终极模块化方案，但他的缺点在于目前还无法直接运行在大部分`JavaScript`运行环境下，必须通过工具转换成标准ES5后才能正常运行。
+
+# 自动化构建
+构建就是把源代码转换成发布到线上的可执行`JavaScript`、`CSS`、`HTML`代码，包括以下内容。 
+- 代码转换： ECMAscript6 编程成浏览器识别的 ECMAscript5、LESS编译成CSS等。
+- 文件优化： 压缩`JavaScript`、`CSS`、`HTML`代码，压缩合并图片等。
+- 代码分割： 提取多个页面的公共代码，提取首屏不需要执行部分的代码让其异步加载
+- 模块合并： 在采用模块化的项目里会有多个模块和文件，需要构建功能吧模块分类合并成一个文件。
+- 自动刷新： 监听本地源代码的变化，自动重新构建，刷新浏览器。
+- 代码校验： 在代码被提交到仓库前需要校验代码是否符合规范，以及单元测试是否通过。
+- 自动发布： 更新完代码后，自动构建出线上可发布代码并推送至发布系统。
+
+```
+#! /usr/bin/env node
+const Path = require('path');
+const fs = require('fs');
+let ejs = require('ejs');
+let cwd = process.cwd();
+let { entry,output:{filname,path}} = reuqire(Path.join(cwd,'./webpack.config.js'));
+let script  = fs.readFileSync(entry,'utf8');
+script.replace(/require\{["'](.+?)['"]\}/g,function(){
+    let name  = arguments[1];
+    let script = fs.readFileSync(name,'utf8');
+    modules.push({name,script});
+})
+let bundle = `
+(function (modules) {
+    function require(moduleId) {
+        var module = {
+            exports: {}
+        };
+        modules[moduleId].call(module.exports, module, module.exports, require);
+        return module.exports;
+    }
+    return require("<%-entry%>");
+})
+    ({
+        "<%-entry%>":
+            (function (module, exports, require) {
+                eval(\`<%-script%>\`);
+            })
+       <%if(modules.length>0){%>,<%}%>
+        <%for(let i=0;i<modules.length;i++){
+            let module = modules[i];%>   
+            "<%-module.name%>":
+            (function (module, exports, require) {
+                eval(\`<%-module.script%>\`);
+            })
+        <% }%>    
+    });
+`
+let bundleJs = ejs.render(bundle,{
+    entry,script,modules
+})
+
+try{
+    fs.writeFileSync(Path.join(path,filename),bundlejs);
+}catch(e){
+     console.error('编译失败 ', e);
+}
+console.log('compile sucessfully!');
+```
