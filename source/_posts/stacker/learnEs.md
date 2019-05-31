@@ -111,3 +111,83 @@ const A = "0";
 console.log(A)
 ```
 > 结果 A B 0  
+
+## 解构
+1. 解构数组  
+解构意思就是分解一个东西的解构，可以用一种类似数组的方式定义N个变量，可以将一个数组中的值按照规则赋值过去。
+```
+let [ name,age ] = [ 'Sean',18 ];
+console.log(name,age)
+```
+2. 嵌套赋值
+```
+let [x,[y],z] = [1,[1,2]];
+console.log(x,y,z) // 1  [1,2] undefined
+
+let [x,[y,z]] = [1,[1,2]];
+console.log(x,y,z) // 1 1 2
+
+let [json,arr,num] = [{name:'Sean'},[1,2],3];
+console.log(json,arr,num); // {name:'Sean'} [1,2] 3
+```
+3. 省略赋值  
+```
+let [ , , x] = [1,2,3]
+console.log(x) // 3
+```
+
+4. 解构对象
+```
+var obj = {name:'Sean',age:18};
+//对象里的name属性的值会交给name这个变量，age的值会交给age这个变量
+var {name,age} = obj;
+//对象里的name属性的值会交给myname这个变量，age的值会交给myage这个变量
+let {name: myname, age: myage} = obj;
+console.log(name,age,myname,myage); // Sean 18 Sean 18
+```
+5. 默认值  
+在赋值和传参的时候可以使用默认值  
+```
+let [a='a',b='b',c= new Error('c必须指定')] = 【1，，3】
+console.log(a,b,c);
+
+function ajax(options){
+    var method = options.method || "get";
+    var data = options.data || {};
+    ...
+}
+
+function ajax({method = "get", data}){
+    console.log(arguments);
+}
+ajax({
+    method: "post",
+    data: {"name": "zfpx"}
+});
+```
+## 字符串  
+1. 模板字符串  
+模板字符串用反引号（数字1左边的那个键）包含，其中的变量用`${}`括起来。
+```
+var name = 'Sean',age = 18;
+let desc = `${name} is ${age} old`
+console.log(desc);
+
+//所有模板字符串的空格和换行，都是被保留的
+let str = `<ul>
+<li>a</li>
+<li>b</li>
+</ul>`;
+console.log(str);
+```
+> 其中的变量会用变量值替换掉
+```
+function replace(desc){
+    return desc.replace(/\$\{([^{]+)\}/g,function(matched,key){
+        return eval(key);
+    });
+}
+```
+
+2. 带标签的模板字符串 
+可以在模板字符串的前面添加一个标签，
