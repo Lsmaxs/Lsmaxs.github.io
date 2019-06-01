@@ -190,4 +190,373 @@ function replace(desc){
 ```
 
 2. 带标签的模板字符串 
-可以在模板字符串的前面添加一个标签，
+可以在模板字符串的前面添加一个标签，这个标签可以去处理模板字符串 标签其实就是一个函数，函数可以接受两个参数，一个是`string`，就是模板字符串里的每个部分的字符串，还有一个参数可以使用`rest`的形式`values`，这个参数里面是模板字符串里的值
+```
+let name = 'Sean',age = 18;
+function desc(strings,...values){
+    console.log(strings,values);
+}
+desc`${name} is ${age} old!`;
+
+```
+3. 字符串新方法  
+- include()： 返回布尔值，表示找到了参数字符串。
+- startsWith()： 返回布尔值，表示参数字符串是否在源字符串的头部
+- endsWith()：返回布尔值，表示参数字符串是否在源字符串的尾部
+```
+var s = 'Sean';
+s.startsWith('S') // true
+s.endsWith('n') // true
+s.includes('a') // true
+```
+第二个参数，表示开始搜索的位置
+```
+var s = 'Sean';
+console.log(s.startsWith('e',2)); // true
+console.log(s.endsWith('e',2)); // true
+console.log(s.includes('S',2)); // false
+
+```
+> `endsWith`的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束
+
+4. repeat 
+`repeat`方法返回一个新字符串，表示将原字符串重复N次  
+```
+'x'.repeat(3); // xxx
+'x'.repeat(0); // ''
+```
+
+## 函数  
+1. 默认参数  
+可以给定义的函数接受的参数设置默认的值 在执行这个函数的时候，如果不指定函数的参数的值，就会使用参数的这些默认的值。 
+```
+function ajax(url,method='GET',dataType="json"){
+  console.log(url);
+  console.log(method);
+  console.log(dataType);
+}
+```
+
+2. 展开操作符  
+把...放在数组前面可以把一个数组进行展开，可以把一个数组直接传入一个函数而不需要使用`apply`  
+```
+// 传入参数
+let print = function (a,b,c){
+    console.log(a,b,c)
+}
+print([1,2,3]);
+print(...[1,2,3]);
+
+// 可以代替apply
+let m1 = Math.max.apply(null,[8, 9, 4, 1]);
+let m2 = Math.max(...[8, 9, 4, 1]);
+
+// 可以代替concat
+let arr1 = [1,3];
+let arr2 = [3,5];
+var arr3 = arr1.concat(arr2);
+var arr4 = [...arr1, ...arr2];
+console.log(arr3,arr4);
+
+//类数组的转数组
+function max(a,b,c) {
+    console.log(Math.max(...arguments));
+}
+max(1, 3, 4);
+```
+3. 剩余操作符 
+剩余操作符可以把其余的参数的值都放到一个叫`b`的数组里面 
+```
+let rest = function(a,...rest){
+    console.log(a,rest)
+}
+rest(1,2,3); // 1, [2,3]
+```
+4. 解构参数  
+```
+let destruct = function({name,age}){
+    console.log(name,age);
+}
+destruct({name:'zfpx',age:6});
+```
+5. 函数的名字 
+ECMAScript 6 给函数添加了一个`name`属性 
+```
+var desc = function descname(){}
+console.log(desc.name);
+```
+6. 箭头函数 
+箭头函数简化了函数的定义方法，一般以`=>`操作符左边为输入的参数，而右边则是进行的操作以及返回的值`inputs=>output`  
+```
+[1,3,6].forEach(val=>val*6)
+```
+> 输入参数如果多于一个要用括号包裹，函数体如果需要执行多语句也需要用大括号包裹   
+箭头函数根本没有自己的`this`，导致内部的`this`都是外层外码块的`this`。正是因为它没有`this`，从而避免了`this`指向的问题。
+```
+var person = {
+    name:'zfpx',
+    getName:function(){
+-   setTimeout(function(){console.log(this);},1000); //在浏览器执行的话this指向window
++   setTimeout(() => console.log(this),1000);//在浏览器执行的话this指向person
+    }
+}
+person.getName();
+
+```
+7. 数组的新方法
+
+- from  
+将一个数组或者类数组变成数组，会复制一份  
+```
+let newArray = Array.from(oldArray)
+```
+- Array.of
+`of`是为了将一组数值，转换为数组
+```
+console.log(Array(3), Array(3).length);
+console.log(Array.of(3), Array.of(3).length);
+```
+- cpoyWithin  
+`Array.prototype.copyWithin(target,start=0,end = this.length)`覆盖目标的下标 开始的下标 结束的后一个下标
+```
+[1, 2, 3, 4, 5].copyWithin(3, 1, 2); //[1, 2, 3, 2, 5]
+```
+- find  
+查到对应的元素和索引  
+```
+let arr = [1, 2 ,3, 3, 4, 5];
+let finds = arr.find((item, index, arr) => {
+    return item === 3;
+});
+let findIndexs = arr.findIndex((item, index, arr) => {
+    return item === 3;
+});
+
+console.log(finds, findIndexs);// 3  2
+```
+- fill  
+就是填充数组的意思 会更改原数组 `Array.prototype.fill(value, start, end = this.length)`
+```
+ let arr = [1, 2, 3, 4, 5, 6];
+ arr.fill('a', 1, 2);
+ console.log(arr) //  [1, "a", 3, 4, 5, 6]
+```
+
+## 对象 
+1. 对象字面量  
+如果你想在对象里面添加跟变量一样的属性，并且属性的值就是变量表示的值就可以直接在对象里加上这些属性  
+```
+let name = 'Sean';
+let age = 18;
+let getName = function(){
+    console.log(this.name);
+}
+let person = {
+    name,
+    age,
+    getName
+}
+person.getName();
+```
+2. Object.is 
+对比两个值是否相等
+```
+console.log(Object.is(NaN,NaN));
+```
+3. Object.assign
+把多个对象的属性复制到一个对象中，第一个参数是复制的对象，从第二个参数开始往后，都是复制的源对象
+```
+let nameObj = {name:'Sean'};
+let ageObj = {age:18};
+let Obj = {address:'dxc'};
+Object.assign(Obj,nameObj,ageObj);
+
+//克隆对象
+function clone (obj) {
+  return Object.assign({}, obj);
+}
+```
+4. Object.setPrototypeOf
+将一个指定的对象的原型设置为另一个对象或者null
+```
+let nameObj1 = {name:'Sean1'};
+let nameObj2 = {name:'Sean2'};
+let obj = {};
+
+Object.setPrototypeOf(obj,nameObj1);
+console.log(obj.name); //Sean1
+console.log(Object.getPrototypeOf(obj)); //{name: "Sean1"}
+Object.setPrototypeOf(obj,nameObj2);
+console.log(obj.name); //Sean2
+console.log(Object.getPrototypeOf(obj)); //{name: "Sean2"}
+
+```
+5. proto
+直接在对象表达式中设置prototype
+```
+let obj1  = {name:'Sean'};
+let obj3 = {
+    __proto__:obj1
+}
+console.log(obj3.name); // Sean
+console.log(Object.getPrototypeOf(obj3)); //{name: "Sean"}
+```
+6. super
+通过`super`可以调用`prototype`上的属性和方法
+```
+let person ={
+    eat(){
+        return 'milk';
+    }
+}
+let student = {
+    __proto__:person,
+    eat(){
+        return super.eat()+' bread'
+    }
+}
+console.log(student.eat());
+```
+
+## 类 
+1. class  
+使用`class`这个关键词定义一个类，基于这个类创建实例以后会自动执行`constructor`方法，此方法可以用来初始化  
+```
+class Person {
+    constructor(name){
+        this.name = name;
+    }
+    getName(){
+        console.log(this.name);
+    }
+}
+let person = new Person('Sean');
+person.getName();
+
+```
+2. get与set
+`getter`可以用来得获取属性，`setter`可以去设置属性  
+```
+class Person{
+    constructor(){
+        this.hobbies = [];
+    }
+    set hobby(hobby){
+        this.hobbies.push(hobby);
+    }
+    get hobby(){
+        return this.hobbies
+    }
+}
+let person = new Person();
+person.hobby = 'basketball';
+person.hobby = 'football';
+console.log(person.hobby); //["basketball", "football"]
+```
+3. 静态方法 static  
+在类里面添加静态的方法可以使用`static`这个关键词，静态方法就是不需要实例化类就能用的方法
+```
+class Person {
+   static add(a,b){
+       return a+b;
+   }
+}
+console.log(Person.add(1,2));
+```
+4. 继承 extends
+一个类可以去继承其他的类的东西
+```
+class Person {
+   constructor(name){
+     this.name = name;
+   }
+}
+class Teacher extends Person{
+    constructor(name,age){
+        super(name);
+        this.age = age;
+    }
+}
+var teacher = new Teacher('Sean',18);
+console.log(teacher.name,teacher.age);
+```
+
+##  生成器（Generator）与 迭代器（Iteration）
+`Generator`是一个特殊的函数，他执行会返回一个 `Iterator`对象。通过遍历迭代器，`Genrator`函数运行后会返回一个遍历器对象，而不是返回普通函数的返回值。
+1. Iteration模拟
+迭代器有一个`next`方法，每次执行的时候回返回一个对象，对象里面有两个属性，一个是`value`表示返回的值，还有就是布尔值`done`表示迭代是否完成
+```
+funciton bug(books){
+    let i = 0;
+    return {
+        next(){
+            let done = i == books.length;
+            let value = !done?  books[i++]:undefined;
+            return{
+                value,
+                done
+            }
+        }
+    }
+}
+let iterators = buy(['js', 'html']);
+var curr;
+do {
+    curr = iterators.next();
+    console.log(curr);
+} while (!curr.done);
+```
+2. Generator  
+生成器用于创建迭代器  
+```
+function *buy(books){
+    for(var i=0;i<books.length;i++){
+        yield hooks[i]
+    }
+}
+let buying = buy(['js','html']);
+var curr;
+do {
+    curr = buying.next();
+    console.log(curr);
+} while (!curr.done);
+```
+
+## 集合  
+1. Set  
+一个`Set`是一堆东西的集合，`Set`有点像数组，不过跟数组不一样的是，`Set`里面不能有重复内容  
+```
+let books = new Set();
+books.add('js');
+books.add('js');//添加重复元素集合的元素个数不会改变
+books.add('html');
+books.forEach(function(book){//循环集合
+    console.log(book);
+})
+console.log(books.size);//集合中元数的个数
+console.log(books.has('js'));//判断集合中是否有此元素
+books.delete('js');//从集合中删除此元素
+console.log(books.size);
+console.log(books.has('js'));
+books.clear();//清空 set
+console.log(books.size);
+```
+
+2. Map  
+可以使用 `Map` 来组织这种名值对的数据  
+```
+let books = new Map();
+books.set('js',{name:'js'});//向map中添加元素
+books.set('html',{name:'html'});
+console.log(books.size);//查看集合中的元素
+console.log(books.get('js'));//通过key获取值
+books.delete('js');//执照key删除元素
+console.log(books.has('js'));//判断map中有没有key
+books.forEach((value, key) => { //forEach可以迭代map
+    console.log( key + ' = ' + value);
+});
+books.clear();//清空map
+```
+
+## 模块 
+可以根据应用吧需求代码分成
