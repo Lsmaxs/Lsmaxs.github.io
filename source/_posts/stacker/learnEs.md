@@ -601,3 +601,48 @@ export default function say(){
 ```
 import say from './school.js';
 ```
+
+#### 深度克隆  
+```
+let parent = {
+    age:18,
+    hobby:[1,2,3],
+    home:{city:'汕头'}
+}
+let child = extendDeep(parent);
+child.age = 6;
+child.hobby.push('4');
+child.home.city = '广东';
+console.log('child ', child); //[1, 2, 3, 4]
+console.log('parent ', parent);
+// 浅拷贝
+function extend(parent){
+    let child;
+    if(Object.prototype.toString.call(parent)== '[object Object]' ){
+        child = {};
+        for( var key in parent){
+            child[key] = extend(parent[key])
+        }
+    } else if(Object.prototype.toString.call(parent) == '[object Array]'){
+        child = parent.map(item=>chlid(item))
+    }else {
+         return parent;
+    }
+    return child
+}   
+
+// 深拷贝
+function extendsDeep(parent,child){
+    child = child || {}
+    for(let key in parent){
+        let target = parent[key];
+        if(typeof target == 'object'){
+            child[key] = (Object.prototype.toString.call(target) === "[object Array]") ? [] : {};
+            extendsDeep(target,child[key])
+        }else{
+            child[key] = target;
+        }
+    }
+    return child
+}
+```
