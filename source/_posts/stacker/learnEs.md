@@ -8,7 +8,7 @@ tags: stack
 
 ECMAScript简称就是ES,你可以把它看成是一套标准,`JavaScript`就是实施了这套标准的一门语言,现在主流浏览器使用的是ECMAScript5。
 
-[ECMAScript6](https://es6.ruanyifeng.com/) 全部看完受用一生～   
+[ECMAScript6](https://es6.ruanyifeng.com/)   全部看完受用一生～   
 
 ## 作用域变量  
 作用域就是一个变量的作用范围。也就是你声明一个变量以后,这个变量可以在什么场合下使用 以前的`JavaScript`只有全局作用域，还有一个函数作用域。

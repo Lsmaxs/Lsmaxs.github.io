@@ -31,7 +31,7 @@ module.exports = antFun;
 ```  
 
 ### 原理
-A.js
+ A.js
 ```
 let fs = require('fs);
 let path = require('path');
@@ -47,7 +47,7 @@ function req(mod){
 }
 
 ```  
-B.js
+ B.js
 ```
 console.log('I am B');
 exports.name = 'zfpx';
@@ -111,7 +111,7 @@ export const name = 'zfpx';
 ES6 模块虽然是终极模块化方案，但他的缺点在于目前还无法直接运行在大部分`JavaScript`运行环境下，必须通过工具转换成标准ES5后才能正常运行。
 
 # 自动化构建
-构建就是把源代码转换成发布到线上的可执行`JavaScript`、`CSS`、`HTML`代码，包括以下内容。 
+构建就是把源代码转换成发布到线上的可执行`JavaScript`、`CSS`、`HTML`代码，包括以下内容。   
 - 代码转换： ECMAscript6 编程成浏览器识别的 ECMAscript5、LESS编译成CSS等。
 - 文件优化： 压缩`JavaScript`、`CSS`、`HTML`代码，压缩合并图片等。
 - 代码分割： 提取多个页面的公共代码，提取首屏不需要执行部分的代码让其异步加载
@@ -144,20 +144,6 @@ let bundle = `
     }
     return require("<%-entry%>");
 })
-    ({
-        "<%-entry%>":
-            (function (module, exports, require) {
-                eval(\`<%-script%>\`);
-            })
-       <%if(modules.length>0){%>,<%}%>
-        <%for(let i=0;i<modules.length;i++){
-            let module = modules[i];%>   
-            "<%-module.name%>":
-            (function (module, exports, require) {
-                eval(\`<%-module.script%>\`);
-            })
-        <% }%>    
-    });
 `
 let bundleJs = ejs.render(bundle,{
     entry,script,modules
