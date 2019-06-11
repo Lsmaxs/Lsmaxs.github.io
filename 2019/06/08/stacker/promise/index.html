@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="异步回调回调地狱在需要多个操作的时候，会导致多个回调函数嵌套，导致代码不够直观，就是常说的回调地狱 并行结果如果几个异步操作之间并没有前后顺序之分,但需要等多个异步操作都完成后才能执行后续的任务，无法实现并行节约时间  PromisePromise本意是承诺，在程序中的意思就是承诺我过一段时间后会给你一个结果。 什么时候会用到过一段时间？答案是异步操作，异步是指可能比较长时间才有结果的才做，例如网">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-06-11T12:19:37.444Z">
+<meta property="og:updated_time" content="2019-06-11T12:34:36.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之Promise">
 <meta name="twitter:description" content="异步回调回调地狱在需要多个操作的时候，会导致多个回调函数嵌套，导致代码不够直观，就是常说的回调地狱 并行结果如果几个异步操作之间并没有前后顺序之分,但需要等多个异步操作都完成后才能执行后续的任务，无法实现并行节约时间  PromisePromise本意是承诺，在程序中的意思就是承诺我过一段时间后会给你一个结果。 什么时候会用到过一段时间？答案是异步操作，异步是指可能比较长时间才有结果的才做，例如网">
@@ -350,7 +350,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:19:37" itemprop="dateModified" datetime="2019-06-11T12:19:37+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
               
             
           </span>
@@ -421,20 +421,12 @@ then(success,error){
 <p>readFile(‘1.txt’).then(function (data) {<br>    console.log(data);<br>    return data;<br>}).then(function (data) {<br>    console.log(data);<br>    return readFile(data);<br>}).then(function (data) {<br>    console.log(data);<br>}).catch(function(err){<br> console.log(err);<br>});</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Promise API</span><br><span class="line">1. Promise.all</span><br><span class="line">- 参数： 接受一个数组，数组内都是`Promise`实例</span><br><span class="line">- 返回值： 返回一个`Promise`实例，这个`Promise`实例的状态转移取决于参数的`Promise`实例的状态变化。当参数中所有的实例都处于`resolve`状态时,返回的`Promise`实例会变成`resolve`状态。如果参数中任意一个实例处于`reject`状态,返回的Promise实例变为`reject`状态。</span><br></pre></td></tr></table></figure>
 <p>Promise.all([p1, p2]).then(function (result) {<br>  console.log(result); // [ ‘2.txt’, ‘2’ ]<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; 不管两个promise谁先完成，Promise.all方法会按照数组里面的顺序将结果返回</span><br><span class="line"></span><br><span class="line">2. Promise.race</span><br><span class="line">- 参数： 接受一个数组，数组内都是Promise实例</span><br><span class="line">- 返回值： 返回一个`Promise`实例，这个`Promise`实例的状态转移取决于参数的`Promise`实例的状态变化。当参数中任何一个实例处于`resolve`状态时，返回的`Promise`实例会变为`resolve`状态。如果参数中任意一个实例处于`reject`状态，返回的`promise`实例变为`reject`状态。</span><br></pre></td></tr></table></figure></p>
-<p>Promise.race([p1, p2]).then(function (result) {<br>  console.log(result); // [ ‘2.txt’, ‘2’ ]<br>});<br><code>`</code></p>
-<ol start="3">
-<li>Promise.resolve<br>返回一个<code>Promise</code>实例，这个实例处于<code>resolve</code>状态。<br>根据传入的参数不同有不同的功能：</li>
-</ol>
-<ul>
-<li>值(对象，数组，字符串等): 作为<code>resolve</code>传递出去的值</li>
-<li><code>promise</code>实例：原封不动返回</li>
-</ul>
-<ol start="4">
-<li>Promise.rejcet<br>返回一个<code>Promise</code>实例，这个实例处于<code>reject</code>状态。</li>
-</ol>
-<ul>
-<li>参数一般就是抛出的错误信息</li>
-</ul>
+<p>Promise.race([p1, p2]).then(function (result) {<br>  console.log(result); // [ ‘2.txt’, ‘2’ ]<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. Promise.resolve</span><br><span class="line">返回一个`Promise`实例，这个实例处于`resolve`状态。</span><br><span class="line">根据传入的参数不同有不同的功能：</span><br><span class="line">- 值(对象，数组，字符串等): 作为`resolve`传递出去的值</span><br><span class="line">- `promise`实例：原封不动返回</span><br><span class="line"></span><br><span class="line">4. Promise.rejcet</span><br><span class="line">返回一个`Promise`实例，这个实例处于`reject`状态。</span><br><span class="line">- 参数一般就是抛出的错误信息</span><br><span class="line"></span><br><span class="line"># co </span><br><span class="line">## co初体验</span><br></pre></td></tr></table></figure></p>
+<p>let fs = require(‘fs’);<br>function getNumber(){<br>    return new Promise((resolve,reject)=&gt;{<br>        setTimeout(function(){<br>            let number = Math.random();<br>            number&gt;.5?resolve(number):reject(‘数字太小’)；<br>        },500)<br>    })<br>}</p>
+<p>function *read(){<br>    let a = yield getNumber();<br>    console.log(a);<br>    let b = yield ‘b’;<br>    console.log(b);<br>    let c = yield getNumber();<br>    console.log(c);<br>}</p>
+<p>function co(gen){<br>    return new Promise((resolve,reject)=&gt;{<br>        let g = gen();<br>        function next(lastValue){<br>            let { done,value} = gen.next(lastValue);<br>            if(done){<br>                resolve(lastValue)<br>            }else{<br>                if(value instanceof Promise){<br>                    value.then(next,function(val){<br>                        reject(value)<br>                    })<br>                }else{<br>                    next(value)<br>                }<br>            }<br>        }<br>    })<br>}</p>
+<p>co(read).then(res=&gt;console.log(res),rea=&gt;console.log(rea));</p>
+<p><code>`</code></p>
 
       
     </div>
