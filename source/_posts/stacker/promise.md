@@ -162,3 +162,49 @@ Promise.race([p1, p2]).then(function (result) {
 4. Promise.rejcet
 返回一个`Promise`实例，这个实例处于`reject`状态。
 - 参数一般就是抛出的错误信息
+
+# co 
+## co初体验
+```
+let fs = require('fs');
+function getNumber(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(function(){
+            let number = Math.random();
+            number>.5?resolve(number):reject('数字太小')；
+        },500)
+    })
+}
+
+function *read(){
+    let a = yield getNumber();
+    console.log(a);
+    let b = yield 'b';
+    console.log(b);
+    let c = yield getNumber();
+    console.log(c);
+}
+
+function co(gen){
+    return new Promise((resolve,reject)=>{
+        let g = gen();
+        function next(lastValue){
+            let { done,value} = gen.next(lastValue);
+            if(done){
+                resolve(lastValue)
+            }else{
+                if(value instanceof Promise){
+                    value.then(next,function(val){
+                        reject(value)
+                    })
+                }else{
+                    next(value)
+                }
+            }
+        }
+    })
+}
+
+co(read).then(res=>console.log(res),rea=>console.log(rea));
+
+```
