@@ -208,3 +208,44 @@ function co(gen){
 co(read).then(res=>console.log(res),rea=>console.log(rea));
 
 ```
+
+## co 连续读文件
+```
+let fs = require('fs');
+function readFile(filename){
+    return new Promise((resolve,reject)=>{
+        fs.readFileSync(filename,'utf8',function(err,data){
+            if(err){
+                reject(err)
+            }else{
+                resolve(data)
+            }
+        })
+    })
+}
+
+function *read(){
+    let a = yiled readFile('a.txt')
+    console.log(a)
+    let b = yiled readFile('b.txt')
+    console.log(b)
+}
+
+function co function(gen){
+    let g = gen();
+    return next(val){
+        let {done,value} = g.next(val);
+        if(!done){
+           value.then(next)
+        }
+        next();
+    }
+}
+
+```
+
+# promise完整实现
+```
+
+
+```
