@@ -246,6 +246,20 @@ function co function(gen){
 
 # promise完整实现
 ```
+class Promise {
+    consutrans(props){
+        super(props)
+        this.stack = []
+    }   
+    static resolve(){
 
+    }
+    static reject(){
+
+    }
+    static then(){
+
+    }
+}
 
 ```
