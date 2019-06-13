@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/11/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lsmaxs">
@@ -306,7 +306,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/11/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+                <a href="/2019/06/13/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
               
             
           </h1>
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="Created: 2019-06-11 12:34:36" itemprop="dateCreated datePublished" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+              <time title="Created: 2019-06-13 12:33:06" itemprop="dateCreated datePublished" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
             
 
             
@@ -495,7 +495,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-13 12:33:06" itemprop="dateModified" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
               
             
           </span>
@@ -573,6 +573,20 @@ then(success,error){
 <p>function *read(){<br>    let a = yield getNumber();<br>    console.log(a);<br>    let b = yield ‘b’;<br>    console.log(b);<br>    let c = yield getNumber();<br>    console.log(c);<br>}</p>
 <p>function co(gen){<br>    return new Promise((resolve,reject)=&gt;{<br>        let g = gen();<br>        function next(lastValue){<br>            let { done,value} = gen.next(lastValue);<br>            if(done){<br>                resolve(lastValue)<br>            }else{<br>                if(value instanceof Promise){<br>                    value.then(next,function(val){<br>                        reject(value)<br>                    })<br>                }else{<br>                    next(value)<br>                }<br>            }<br>        }<br>    })<br>}</p>
 <p>co(read).then(res=&gt;console.log(res),rea=&gt;console.log(rea));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## co 连续读文件</span><br></pre></td></tr></table></figure>
+<p>let fs = require(‘fs’);<br>function readFile(filename){<br>    return new Promise((resolve,reject)=&gt;{<br>        fs.readFileSync(filename,’utf8’,function(err,data){<br>            if(err){<br>                reject(err)<br>            }else{<br>                resolve(data)<br>            }<br>        })<br>    })<br>}</p>
+<p>function *read(){<br>    let a = yiled readFile(‘a.txt’)<br>    console.log(a)<br>    let b = yiled readFile(‘b.txt’)<br>    console.log(b)<br>}</p>
+<p>function co function(gen){<br>    let g = gen();<br>    return next(val){<br>        let {done,value} = g.next(val);<br>        if(!done){<br>           value.then(next)<br>        }<br>        next();<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># promise完整实现</span><br></pre></td></tr></table></figure>
+<p>class Promise {<br>    consutrans(props){<br>        super(props)<br>        this.stack = []<br>    }<br>    static resolve(){</p>
+<pre><code>}
+static reject(){
+
+}
+static then(){
+
+}
+</code></pre><p>}</p>
 <p><code>`</code></p>
 
           
@@ -692,7 +706,7 @@ then(success,error){
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-13 12:33:06" itemprop="dateModified" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
               
             
           </span>
@@ -1062,7 +1076,7 @@ then(success,error){
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-13 12:33:06" itemprop="dateModified" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
               
             
           </span>
@@ -1243,7 +1257,7 @@ then(success,error){
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-13 12:33:06" itemprop="dateModified" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
               
             
           </span>
@@ -1401,7 +1415,7 @@ then(success,error){
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-13 12:33:06" itemprop="dateModified" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
               
             
           </span>
@@ -1598,7 +1612,7 @@ then(success,error){
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-13 12:33:06" itemprop="dateModified" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
               
             
           </span>
@@ -1820,7 +1834,7 @@ then(success,error){
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-13 12:33:06" itemprop="dateModified" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
               
             
           </span>
@@ -1977,7 +1991,7 @@ then(success,error){
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-13 12:33:06" itemprop="dateModified" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
               
             
           </span>

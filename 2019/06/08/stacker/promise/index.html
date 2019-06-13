@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="异步回调回调地狱在需要多个操作的时候，会导致多个回调函数嵌套，导致代码不够直观，就是常说的回调地狱 并行结果如果几个异步操作之间并没有前后顺序之分,但需要等多个异步操作都完成后才能执行后续的任务，无法实现并行节约时间  PromisePromise本意是承诺，在程序中的意思就是承诺我过一段时间后会给你一个结果。 什么时候会用到过一段时间？答案是异步操作，异步是指可能比较长时间才有结果的才做，例如网">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-06-11T12:34:36.068Z">
+<meta property="og:updated_time" content="2019-06-13T12:33:06.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之Promise">
 <meta name="twitter:description" content="异步回调回调地狱在需要多个操作的时候，会导致多个回调函数嵌套，导致代码不够直观，就是常说的回调地狱 并行结果如果几个异步操作之间并没有前后顺序之分,但需要等多个异步操作都完成后才能执行后续的任务，无法实现并行节约时间  PromisePromise本意是承诺，在程序中的意思就是承诺我过一段时间后会给你一个结果。 什么时候会用到过一段时间？答案是异步操作，异步是指可能比较长时间才有结果的才做，例如网">
@@ -350,7 +350,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 12:34:36" itemprop="dateModified" datetime="2019-06-11T12:34:36+00:00">2019-06-11</time>
+                <time title="Modified: 2019-06-13 12:33:06" itemprop="dateModified" datetime="2019-06-13T12:33:06+00:00">2019-06-13</time>
               
             
           </span>
@@ -426,6 +426,20 @@ then(success,error){
 <p>function *read(){<br>    let a = yield getNumber();<br>    console.log(a);<br>    let b = yield ‘b’;<br>    console.log(b);<br>    let c = yield getNumber();<br>    console.log(c);<br>}</p>
 <p>function co(gen){<br>    return new Promise((resolve,reject)=&gt;{<br>        let g = gen();<br>        function next(lastValue){<br>            let { done,value} = gen.next(lastValue);<br>            if(done){<br>                resolve(lastValue)<br>            }else{<br>                if(value instanceof Promise){<br>                    value.then(next,function(val){<br>                        reject(value)<br>                    })<br>                }else{<br>                    next(value)<br>                }<br>            }<br>        }<br>    })<br>}</p>
 <p>co(read).then(res=&gt;console.log(res),rea=&gt;console.log(rea));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## co 连续读文件</span><br></pre></td></tr></table></figure>
+<p>let fs = require(‘fs’);<br>function readFile(filename){<br>    return new Promise((resolve,reject)=&gt;{<br>        fs.readFileSync(filename,’utf8’,function(err,data){<br>            if(err){<br>                reject(err)<br>            }else{<br>                resolve(data)<br>            }<br>        })<br>    })<br>}</p>
+<p>function *read(){<br>    let a = yiled readFile(‘a.txt’)<br>    console.log(a)<br>    let b = yiled readFile(‘b.txt’)<br>    console.log(b)<br>}</p>
+<p>function co function(gen){<br>    let g = gen();<br>    return next(val){<br>        let {done,value} = g.next(val);<br>        if(!done){<br>           value.then(next)<br>        }<br>        next();<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># promise完整实现</span><br></pre></td></tr></table></figure>
+<p>class Promise {<br>    consutrans(props){<br>        super(props)<br>        this.stack = []<br>    }<br>    static resolve(){</p>
+<pre><code>}
+static reject(){
+
+}
+static then(){
+
+}
+</code></pre><p>}</p>
 <p><code>`</code></p>
 
       
@@ -476,7 +490,7 @@ then(success,error){
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/11/hello-world/" rel="prev" title="Hello World">
+              <a href="/2019/06/13/hello-world/" rel="prev" title="Hello World">
                 Hello World <i class="fa fa-chevron-right"></i>
               </a>
             
