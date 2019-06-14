@@ -30,7 +30,8 @@ let promise = new Promise((resolve, reject) => {
             reject('This is reject!');
     }, 1000);
 });
-promise.then(Fulfilled,Rejected)
+promise.then(Fulfilled,Rejected) 
+
 ``` 
 - 构造一个Promise实例需要给promise构造函数传入一个函数 
 - 传入的函数需要有两个形参,两个形参都是function类型的参数 
@@ -38,6 +39,7 @@ promise.then(Fulfilled,Rejected)
   - 第一形参运行后会让Promise实例处于reject状态,所以我们一般给一个形参命名为reject,将Promise对象的转态变为失败,同时将错误的信息传递到后续错误处理的操作
 
 2. es5模拟Promise
+
 ```
 function Promise(fn){
     fn((data)=>{
@@ -58,7 +60,8 @@ Promise.prototype.then = function (success, error) {
 }
 ```
 
-3. es6模拟Promise
+3. es6模拟Promise 
+
 ```
 class Promise {
     constructor(fn){
@@ -86,7 +89,8 @@ class Promise {
 
 ```
 
-# Promise做为函数的返回值
+# Promise做为函数的返回值  
+
 ```
 function ajaxPromise(queryUrl){
     return new Promise((resolve,reject)=>{
@@ -118,7 +122,8 @@ ajaxPromise('http://www.baidu.com')
 - 每次调用返回的都是一个新的Promise实例
 - 链式调用的参数通过返回值传递
 
-then可以使用链式调用的写法原因在于，每一次执行该方法时总是会返回一个`Promise`对象
+then可以使用链式调用的写法原因在于，每一次执行该方法时总是会返回一个`Promise`对象  
+
 ```
 readFile('1.txt').then(function (data) {
     console.log(data);
@@ -133,15 +138,19 @@ readFile('1.txt').then(function (data) {
 });
 
 ```
+
 # Promise API
+
 1. Promise.all
 - 参数： 接受一个数组，数组内都是`Promise`实例
-- 返回值： 返回一个`Promise`实例，这个`Promise`实例的状态转移取决于参数的`Promise`实例的状态变化。当参数中所有的实例都处于`resolve`状态时,返回的`Promise`实例会变成`resolve`状态。如果参数中任意一个实例处于`reject`状态,返回的Promise实例变为`reject`状态。
+- 返回值： 返回一个`Promise`实例，这个`Promise`实例的状态转移取决于参数的`Promise`实例的状态变化。当参数中所有的实例都处于`resolve`状态时,返回的`Promise`实例会变成`resolve`状态。如果参数中任意一个实例处于`reject`状态,返回的Promise实例变为`reject`状态。  
+
 ```
 Promise.all([p1, p2]).then(function (result) {
   console.log(result); // [ '2.txt', '2' ]
 });
 ```
+
 > 不管两个promise谁先完成，Promise.all方法会按照数组里面的顺序将结果返回
 
 2. Promise.race
@@ -164,7 +173,8 @@ Promise.race([p1, p2]).then(function (result) {
 - 参数一般就是抛出的错误信息
 
 # co 
-## co初体验
+## co初体验  
+
 ```
 let fs = require('fs');
 function getNumber(){
@@ -209,7 +219,8 @@ co(read).then(res=>console.log(res),rea=>console.log(rea));
 
 ```
 
-## co 连续读文件
+## co 连续读文件  
+
 ```
 let fs = require('fs');
 function readFile(filename){
@@ -244,22 +255,78 @@ function co function(gen){
 
 ```
 
-# promise完整实现
+# promise完整实现  
+
 ```
-class Promise {
-    consutrans(props){
-        super(props)
-        this.stack = []
-    }   
-    static resolve(){
+function Promise (execuor){
+    let self = this;
+    self.status = "pending";
+    self.value = null;
+    self.onResolvedCallbacks = [];
+    self.onRejectedCallbacks = [];
 
+    function resolve(value){
+        if(value instanceof Promise){
+            return value.then(resolve,reject)'
+        }
+        setTimeout(function(){
+            if(self.status=="pending"){
+                self.value = value;
+                self.status = "resolved";
+                self.onResolvedCallbacks.forEarch(item=>item(value))
+            }
+        })
     }
-    static reject(){
 
+    function reject(value){
+        setTimeout(function(){
+            if(self.status=='pending'){
+                self.value = value;
+                self.status = 'rejected';
+                self.onRejectedCallbacks.forEarch(item=>item(value))
+            }
+        })
     }
-    static then(){
 
+    try{
+        execuor(resolve,reject);
+    }catch(e){
+        reject(e)
     }
 }
 
+```
+
+```
+function reolvePromise(promise2,x,reslove,reject){
+    if(promise2 ==x){
+        return reject(new TypeError('循环调用‘))
+    }
+    let then,called;
+
+    if(x!=null&& ((typeof x == 'object')||(typeof x == 'function'))){
+        try{
+            then = x.then;
+            if(typeof then == 'function'){
+                then.call(x, function(y){
+                    if(called) return;
+                    called = true;
+                    resolvePromise(promise2, y, resolve, reject);
+                },function(r){
+                    if(called) return
+                    called = true;
+                    reject(r)
+                })
+            }else{
+                resolve(x)
+            }
+        }catch(e){
+            if(called) return 
+            called = true;
+            reject(e)
+        }
+    }else{
+        resolve(x)
+    }
+}
 ```
