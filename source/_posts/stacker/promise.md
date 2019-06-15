@@ -330,3 +330,5 @@ function reolvePromise(promise2,x,reslove,reject){
     }
 }
 ```
+
+
