@@ -331,4 +331,95 @@ function reolvePromise(promise2,x,reslove,reject){
 }
 ```
 
+```
+promise.prototype.then = function(onFulfilled,onRejected){
+    let self = this;
+    onFulfilled = typeof onFulfilled == "function"?onFulfilled:function(value){
+        return value
+    }
+    onRejected = typeof onRejected == "function"?onRejected:function(value){
+        throw value
+    }
+
+    let promise2;
+    if(self.status=='resolved'){
+        promise2 = new Promise(function(resolve,reject){
+            setTimeout(function(){
+                try{
+                    let x = onFulfilled(self.value);
+                    resolvePromise(Promise2,x,resolve,reject);
+                }catch(e){
+                    reject(e)
+                }
+            })
+        })
+    }
+
+    if(self.status =='rejected'){
+        promise2 = new Promise(function(resolve,reject){
+            setTimeout(function(function(){
+                try{
+                    let x = onRejected(self.value);
+                    resolvePromise(promise2,x,reolve,reject)
+                }catch(e){
+                    reject(e)
+                }
+            }))
+        })
+    }
+    if(self.status = 'pending'){
+        promise2 = new Promise(function(resolve,rejcet){
+            self.onResolvedCallbacks.push(function (value) {
+                try {
+                let x = onFulfilled(value);
+                resolvePromise(promise2, x, resolve, reject);
+                } catch (e) {
+                reject(e);
+                }
+            });
+            self.onRejectedCallbacks.push(function (value) {
+                try {
+                let x = onRejected(value);
+                resolvePromise(promise2, x, resolve, reject);
+                } catch (e) {
+                reject(e);
+                }
+            });
+        })
+    }
+    return promise2;
+}
+```
+```
+Promise.prototype.catch=function(onRejected){
+    return this.then(null,onRejected)
+}
+
+Promise.all = function(promises){
+    return new Promise(function(resolve,reject){
+        let result = [];
+        let count = 0;
+        for (let i = 0;i<promises.length;i++){
+            promises[i].then(function(data){
+                result[i] = data;
+                if(++count==promises.length){
+                    resolve(result)
+                }
+            },function(err){
+                reject(err)
+            })
+        }
+    })
+}
+
+Promise.deferred = Promise.defer = function(){
+    var defer = {};
+    defer.promise = new Promise(function(resolve,reject){
+        defer.resolve = resolve;
+        defer.reject = reject;
+    })
+    return defer;
+}
+```
+
 
