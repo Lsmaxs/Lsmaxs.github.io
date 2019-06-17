@@ -331,7 +331,7 @@
                 
               
 
-              <time title="Created: 2019-06-17 09:18:02" itemprop="dateCreated datePublished" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
+              <time title="Created: 2019-06-17 10:27:19" itemprop="dateCreated datePublished" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
             
 
             
@@ -377,6 +377,199 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/stacker/nodeInfo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lsmaxs">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/15/stacker/nodeInfo/" class="post-title-link" itemprop="url">全栈成长之Node</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-15 10:59:42" itemprop="dateCreated datePublished" datetime="2019-06-15T10:59:42+00:00">2019-06-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Node能解决什么问题？"><a href="#Node能解决什么问题？" class="headerlink" title="Node能解决什么问题？"></a>Node能解决什么问题？</h1><ul>
+<li>Node的首要目标是提供一种简单的，用于创建高性能服务器的开发工具</li>
+<li>Web服务器的瓶颈在于并发的用户量，对比JAVA和PHP的实现方式</li>
+</ul>
+<h1 id="Node是什么？"><a href="#Node是什么？" class="headerlink" title="Node是什么？"></a>Node是什么？</h1><ul>
+<li>Node.js是一个基于chromeV8引擎的JavaScript运行环境，让JavaScript的执行效率与低端的C语言的相近的执行效率。。。</li>
+<li>Node.js使用了一个事件驱动、非阻塞式I/O的模型，使其轻量又高效。</li>
+<li>Node.js的包管理npm，是全球最大的开源库生态系统。</li>
+</ul>
+<h1 id="Node特点"><a href="#Node特点" class="headerlink" title="Node特点"></a>Node特点</h1><h2 id="为什么JavaScript是单线程？"><a href="#为什么JavaScript是单线程？" class="headerlink" title="为什么JavaScript是单线程？"></a>为什么JavaScript是单线程？</h2><ul>
+<li>这是由JavaScript这门语言的用途决定的。</li>
+<li>web worker并没有改变JavaScript单线程的本质</li>
+</ul>
+<h2 id="浏览器模型"><a href="#浏览器模型" class="headerlink" title="浏览器模型"></a>浏览器模型</h2><ul>
+<li>用户界面 - 包括地址栏、前进后退、书签栏等</li>
+<li>浏览器引擎 - 在用户界面和呈现引擎之间传送指令</li>
+<li>网络 - 用于网络调用，比如HTTP请求</li>
+<li>用户界面后端 - 用于绘制基本的窗口小部件，UI线程和JS共用一个线程</li>
+<li>JavaScript解释器 - 用于解析和执行JavaScript代码</li>
+<li>数据存储 - 这个是持久层。浏览器需要在硬盘上保存各种数据，例如 Cookie</li>
+</ul>
+<h2 id="除了JS线程和UI线程之外的其他线程"><a href="#除了JS线程和UI线程之外的其他线程" class="headerlink" title="除了JS线程和UI线程之外的其他线程"></a>除了JS线程和UI线程之外的其他线程</h2><ul>
+<li>浏览器事件触发线程</li>
+<li>定时触发器线程</li>
+<li>异步HTTP请求线程</li>
+</ul>
+<h2 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h2><ol>
+<li>所有同步任务都在主线程上执行，形成一个执行栈</li>
+<li>主线程之外，还存在一个任务队列。只要异步任务有了结果，就在任务队列之中放置一个事件。</li>
+<li>一旦执行栈中的所有同步任务执行完毕，系统救护读取任务队列，看看里面有哪些事件。哪些对应的异步任务，于是结束等待状态，进入执行栈，开始执行、</li>
+<li>主线程不断重复上面的第三步。</li>
+</ol>
+<h2 id="Event-Loop"><a href="#Event-Loop" class="headerlink" title="Event Loop"></a>Event Loop</h2><p>主线程从任务队列中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop(事件循环)</p>
+<h2 id="Node-js的Event-Loop"><a href="#Node-js的Event-Loop" class="headerlink" title="Node.js的Event Loop"></a>Node.js的Event Loop</h2><ol>
+<li>V8引擎解析JavaScript脚本。</li>
+<li>解析后的代码，调用Node API</li>
+<li>libuv库复制Node API的执行。他将不同的任务分配给不同的线程，形成一个Event Loop（事件循环），以异步的方式将任务的执行结果返回给V8引擎。</li>
+<li>V8引擎再将结果返回给用户</li>
+</ol>
 
           
         
@@ -495,7 +688,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 09:18:02" itemprop="dateModified" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
+                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
               
             
           </span>
@@ -725,7 +918,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 09:18:02" itemprop="dateModified" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
+                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
               
             
           </span>
@@ -881,7 +1074,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 09:18:02" itemprop="dateModified" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
+                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
               
             
           </span>
@@ -1251,7 +1444,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 09:18:02" itemprop="dateModified" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
+                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
               
             
           </span>
@@ -1432,7 +1625,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 09:18:02" itemprop="dateModified" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
+                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
               
             
           </span>
@@ -1590,7 +1783,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 09:18:02" itemprop="dateModified" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
+                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
               
             
           </span>
@@ -1787,7 +1980,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 09:18:02" itemprop="dateModified" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
+                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
               
             
           </span>
@@ -2009,7 +2202,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 09:18:02" itemprop="dateModified" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
+                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
               
             
           </span>
@@ -2048,162 +2241,6 @@
             <h1 id="Theme-swtich"><a href="#Theme-swtich" class="headerlink" title="Theme swtich"></a>Theme swtich</h1><blockquote>
 <p>It is a dome that hexo switch Theme</p>
 </blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/05/new-post-test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lsmaxs">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/05/new-post-test/" class="post-title-link" itemprop="url">new post test</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-05 16:17:04" itemprop="dateCreated datePublished" datetime="2019-05-05T16:17:04+00:00">2019-05-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-17 09:18:02" itemprop="dateModified" datetime="2019-06-17T09:18:02+00:00">2019-06-17</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="hello"><a href="#hello" class="headerlink" title="hello"></a>hello</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.writer(&apos; welcome Sean_Blog1&apos;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const name = &apos;hexo&apos;</span><br><span class="line">function init()&#123;</span><br><span class="line">    alert( &apos;welcome&apos; + name )</span><br><span class="line">&#125;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2291,7 +2328,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
