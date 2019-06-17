@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="异步回调回调地狱在需要多个操作的时候，会导致多个回调函数嵌套，导致代码不够直观，就是常说的回调地狱 并行结果如果几个异步操作之间并没有前后顺序之分,但需要等多个异步操作都完成后才能执行后续的任务，无法实现并行节约时间  PromisePromise本意是承诺，在程序中的意思就是承诺我过一段时间后会给你一个结果。 什么时候会用到过一段时间？答案是异步操作，异步是指可能比较长时间才有结果的才做，例如网">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-06-15T09:38:36.427Z">
+<meta property="og:updated_time" content="2019-06-17T09:05:14.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之Promise">
 <meta name="twitter:description" content="异步回调回调地狱在需要多个操作的时候，会导致多个回调函数嵌套，导致代码不够直观，就是常说的回调地狱 并行结果如果几个异步操作之间并没有前后顺序之分,但需要等多个异步操作都完成后才能执行后续的任务，无法实现并行节约时间  PromisePromise本意是承诺，在程序中的意思就是承诺我过一段时间后会给你一个结果。 什么时候会用到过一段时间？答案是异步操作，异步是指可能比较长时间才有结果的才做，例如网">
@@ -350,7 +350,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
@@ -487,7 +487,56 @@ try{
 }else{
     resolve(x)
 }
-</code></pre><p>}<br><code>`</code></p>
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>promise.prototype.then = function(onFulfilled,onRejected){<br>    let self = this;<br>    onFulfilled = typeof onFulfilled == “function”?onFulfilled:function(value){<br>        return value<br>    }<br>    onRejected = typeof onRejected == “function”?onRejected:function(value){<br>        throw value<br>    }</p>
+<pre><code>let promise2;
+if(self.status==&apos;resolved&apos;){
+    promise2 = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            try{
+                let x = onFulfilled(self.value);
+                resolvePromise(Promise2,x,resolve,reject);
+            }catch(e){
+                reject(e)
+            }
+        })
+    })
+}
+
+if(self.status ==&apos;rejected&apos;){
+    promise2 = new Promise(function(resolve,reject){
+        setTimeout(function(function(){
+            try{
+                let x = onRejected(self.value);
+                resolvePromise(promise2,x,reolve,reject)
+            }catch(e){
+                reject(e)
+            }
+        }))
+    })
+}
+if(self.status = &apos;pending&apos;){
+    promise2 = new Promise(function(resolve,rejcet){
+        self.onResolvedCallbacks.push(function (value) {
+            try {
+            let x = onFulfilled(value);
+            resolvePromise(promise2, x, resolve, reject);
+            } catch (e) {
+            reject(e);
+            }
+        });
+        self.onRejectedCallbacks.push(function (value) {
+            try {
+            let x = onRejected(value);
+            resolvePromise(promise2, x, resolve, reject);
+            } catch (e) {
+            reject(e);
+            }
+        });
+    })
+}
+return promise2;
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">Promise.prototype.catch=function(onRejected)&#123;</span><br><span class="line">    return this.then(null,onRejected)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Promise.all = function(promises)&#123;</span><br><span class="line">    return new Promise(function(resolve,reject)&#123;</span><br><span class="line">        let result = [];</span><br><span class="line">        let count = 0;</span><br><span class="line">        for (let i = 0;i&lt;promises.length;i++)&#123;</span><br><span class="line">            promises[i].then(function(data)&#123;</span><br><span class="line">                result[i] = data;</span><br><span class="line">                if(++count==promises.length)&#123;</span><br><span class="line">                    resolve(result)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,function(err)&#123;</span><br><span class="line">                reject(err)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Promise.deferred = Promise.defer = function()&#123;</span><br><span class="line">    var defer = &#123;&#125;;</span><br><span class="line">    defer.promise = new Promise(function(resolve,reject)&#123;</span><br><span class="line">        defer.resolve = resolve;</span><br><span class="line">        defer.reject = reject;</span><br><span class="line">    &#125;)</span><br><span class="line">    return defer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -537,7 +586,7 @@ try{
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/15/hello-world/" rel="prev" title="Hello World">
+              <a href="/2019/06/17/hello-world/" rel="prev" title="Hello World">
                 Hello World <i class="fa fa-chevron-right"></i>
               </a>
             

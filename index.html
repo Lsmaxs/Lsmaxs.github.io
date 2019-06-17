@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/17/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lsmaxs">
@@ -306,7 +306,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/15/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+                <a href="/2019/06/17/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
               
             
           </h1>
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="Created: 2019-06-15 09:38:36" itemprop="dateCreated datePublished" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+              <time title="Created: 2019-06-17 09:05:14" itemprop="dateCreated datePublished" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
             
 
             
@@ -495,7 +495,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
@@ -634,7 +634,56 @@ try{
 }else{
     resolve(x)
 }
-</code></pre><p>}<br><code>`</code></p>
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>promise.prototype.then = function(onFulfilled,onRejected){<br>    let self = this;<br>    onFulfilled = typeof onFulfilled == “function”?onFulfilled:function(value){<br>        return value<br>    }<br>    onRejected = typeof onRejected == “function”?onRejected:function(value){<br>        throw value<br>    }</p>
+<pre><code>let promise2;
+if(self.status==&apos;resolved&apos;){
+    promise2 = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            try{
+                let x = onFulfilled(self.value);
+                resolvePromise(Promise2,x,resolve,reject);
+            }catch(e){
+                reject(e)
+            }
+        })
+    })
+}
+
+if(self.status ==&apos;rejected&apos;){
+    promise2 = new Promise(function(resolve,reject){
+        setTimeout(function(function(){
+            try{
+                let x = onRejected(self.value);
+                resolvePromise(promise2,x,reolve,reject)
+            }catch(e){
+                reject(e)
+            }
+        }))
+    })
+}
+if(self.status = &apos;pending&apos;){
+    promise2 = new Promise(function(resolve,rejcet){
+        self.onResolvedCallbacks.push(function (value) {
+            try {
+            let x = onFulfilled(value);
+            resolvePromise(promise2, x, resolve, reject);
+            } catch (e) {
+            reject(e);
+            }
+        });
+        self.onRejectedCallbacks.push(function (value) {
+            try {
+            let x = onRejected(value);
+            resolvePromise(promise2, x, resolve, reject);
+            } catch (e) {
+            reject(e);
+            }
+        });
+    })
+}
+return promise2;
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">Promise.prototype.catch=function(onRejected)&#123;</span><br><span class="line">    return this.then(null,onRejected)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Promise.all = function(promises)&#123;</span><br><span class="line">    return new Promise(function(resolve,reject)&#123;</span><br><span class="line">        let result = [];</span><br><span class="line">        let count = 0;</span><br><span class="line">        for (let i = 0;i&lt;promises.length;i++)&#123;</span><br><span class="line">            promises[i].then(function(data)&#123;</span><br><span class="line">                result[i] = data;</span><br><span class="line">                if(++count==promises.length)&#123;</span><br><span class="line">                    resolve(result)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,function(err)&#123;</span><br><span class="line">                reject(err)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Promise.deferred = Promise.defer = function()&#123;</span><br><span class="line">    var defer = &#123;&#125;;</span><br><span class="line">    defer.promise = new Promise(function(resolve,reject)&#123;</span><br><span class="line">        defer.resolve = resolve;</span><br><span class="line">        defer.reject = reject;</span><br><span class="line">    &#125;)</span><br><span class="line">    return defer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -753,7 +802,7 @@ try{
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
@@ -909,7 +958,7 @@ try{
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
@@ -1279,7 +1328,7 @@ try{
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
@@ -1460,7 +1509,7 @@ try{
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
@@ -1618,7 +1667,7 @@ try{
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
@@ -1815,7 +1864,7 @@ try{
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
@@ -2037,7 +2086,7 @@ try{
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
@@ -2194,7 +2243,7 @@ try{
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 09:38:36" itemprop="dateModified" datetime="2019-06-15T09:38:36+00:00">2019-06-15</time>
+                <time title="Modified: 2019-06-17 09:05:14" itemprop="dateModified" datetime="2019-06-17T09:05:14+00:00">2019-06-17</time>
               
             
           </span>
