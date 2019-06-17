@@ -104,10 +104,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Node能解决什么问题？ Node的首要目标是提供一种简单的，用于创建高性能服务器的开发工具 Web服务器的瓶颈在于并发的用户量，对比JAVA和PHP的实现方式  Node是什么？ Node.js是一个基于chromeV8引擎的JavaScript运行环境，让JavaScript的执行效率与低端的C语言的相近的执行效率。。。 Node.js使用了一个事件驱动、非阻塞式I/O的模型，使其轻量又高效。">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-06-17T10:27:19.681Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/15/images/stacker/brower.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/15/images/stacker/eventloop.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/15/images/stacker/nodesystem.png">
+<meta property="og:updated_time" content="2019-06-17T11:02:38.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之Node">
 <meta name="twitter:description" content="Node能解决什么问题？ Node的首要目标是提供一种简单的，用于创建高性能服务器的开发工具 Web服务器的瓶颈在于并发的用户量，对比JAVA和PHP的实现方式  Node是什么？ Node.js是一个基于chromeV8引擎的JavaScript运行环境，让JavaScript的执行效率与低端的C语言的相近的执行效率。。。 Node.js使用了一个事件驱动、非阻塞式I/O的模型，使其轻量又高效。">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/15/images/stacker/brower.jpg">
 
 
 
@@ -350,7 +354,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 10:27:19" itemprop="dateModified" datetime="2019-06-17T10:27:19+00:00">2019-06-17</time>
+                <time title="Modified: 2019-06-17 11:02:38" itemprop="dateModified" datetime="2019-06-17T11:02:38+00:00">2019-06-17</time>
               
             
           </span>
@@ -385,30 +389,32 @@
 
       
         <h1 id="Node能解决什么问题？"><a href="#Node能解决什么问题？" class="headerlink" title="Node能解决什么问题？"></a>Node能解决什么问题？</h1><ul>
-<li>Node的首要目标是提供一种简单的，用于创建高性能服务器的开发工具</li>
-<li>Web服务器的瓶颈在于并发的用户量，对比JAVA和PHP的实现方式</li>
+<li><code>Node</code>的首要目标是提供一种简单的，用于创建高性能服务器的开发工具</li>
+<li>Web服务器的瓶颈在于并发的用户量，对比<code>JAVA</code>和<code>PHP</code>的实现方式</li>
 </ul>
 <h1 id="Node是什么？"><a href="#Node是什么？" class="headerlink" title="Node是什么？"></a>Node是什么？</h1><ul>
-<li>Node.js是一个基于chromeV8引擎的JavaScript运行环境，让JavaScript的执行效率与低端的C语言的相近的执行效率。。。</li>
-<li>Node.js使用了一个事件驱动、非阻塞式I/O的模型，使其轻量又高效。</li>
-<li>Node.js的包管理npm，是全球最大的开源库生态系统。</li>
+<li><code>Node.js</code>是一个基于chromeV8引擎的<code>JavaScript</code>运行环境，让<code>JavaScript</code>的执行效率与低端的C语言的相近的执行效率。。。</li>
+<li><code>Node.js</code>使用了一个事件驱动、非阻塞式I/O的模型，使其轻量又高效。</li>
+<li><code>Node.js</code>的包管理npm，是全球最大的开源库生态系统。</li>
 </ul>
 <h1 id="Node特点"><a href="#Node特点" class="headerlink" title="Node特点"></a>Node特点</h1><h2 id="为什么JavaScript是单线程？"><a href="#为什么JavaScript是单线程？" class="headerlink" title="为什么JavaScript是单线程？"></a>为什么JavaScript是单线程？</h2><ul>
-<li>这是由JavaScript这门语言的用途决定的。</li>
-<li>web worker并没有改变JavaScript单线程的本质</li>
+<li>这是由<code>JavaScript</code>这门语言的用途决定的。</li>
+<li><code>Web Worker</code>并没有改变<code>JavaScript</code>单线程的本质</li>
 </ul>
 <h2 id="浏览器模型"><a href="#浏览器模型" class="headerlink" title="浏览器模型"></a>浏览器模型</h2><ul>
 <li>用户界面 - 包括地址栏、前进后退、书签栏等</li>
 <li>浏览器引擎 - 在用户界面和呈现引擎之间传送指令</li>
-<li>网络 - 用于网络调用，比如HTTP请求</li>
+<li>网络 - 用于网络调用，比如<code>HTTP</code>请求</li>
 <li>用户界面后端 - 用于绘制基本的窗口小部件，UI线程和JS共用一个线程</li>
-<li>JavaScript解释器 - 用于解析和执行JavaScript代码</li>
-<li>数据存储 - 这个是持久层。浏览器需要在硬盘上保存各种数据，例如 Cookie</li>
+<li><code>JavaScript</code>解释器 - 用于解析和执行<code>JavaScript</code>代码</li>
+<li><p>数据存储 - 这个是持久层。浏览器需要在硬盘上保存各种数据，例如 <code>Cookie</code>  </p>
+<p><img src="../../images/stacker/brower.jpg" alt="brower"></p>
+</li>
 </ul>
 <h2 id="除了JS线程和UI线程之外的其他线程"><a href="#除了JS线程和UI线程之外的其他线程" class="headerlink" title="除了JS线程和UI线程之外的其他线程"></a>除了JS线程和UI线程之外的其他线程</h2><ul>
 <li>浏览器事件触发线程</li>
 <li>定时触发器线程</li>
-<li>异步HTTP请求线程</li>
+<li>异步<code>HTTP</code>请求线程</li>
 </ul>
 <h2 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h2><ol>
 <li>所有同步任务都在主线程上执行，形成一个执行栈</li>
@@ -416,13 +422,38 @@
 <li>一旦执行栈中的所有同步任务执行完毕，系统救护读取任务队列，看看里面有哪些事件。哪些对应的异步任务，于是结束等待状态，进入执行栈，开始执行、</li>
 <li>主线程不断重复上面的第三步。</li>
 </ol>
-<h2 id="Event-Loop"><a href="#Event-Loop" class="headerlink" title="Event Loop"></a>Event Loop</h2><p>主线程从任务队列中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop(事件循环)</p>
+<h2 id="Event-Loop"><a href="#Event-Loop" class="headerlink" title="Event Loop"></a>Event Loop</h2><p>主线程从任务队列中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop(事件循环)  </p>
+<p> <img src="../../images/stacker/eventloop.png" alt="eventloop"></p>
 <h2 id="Node-js的Event-Loop"><a href="#Node-js的Event-Loop" class="headerlink" title="Node.js的Event Loop"></a>Node.js的Event Loop</h2><ol>
-<li>V8引擎解析JavaScript脚本。</li>
+<li>V8引擎解析<code>JavaScript</code>脚本。</li>
 <li>解析后的代码，调用Node API</li>
-<li>libuv库复制Node API的执行。他将不同的任务分配给不同的线程，形成一个Event Loop（事件循环），以异步的方式将任务的执行结果返回给V8引擎。</li>
-<li>V8引擎再将结果返回给用户</li>
+<li><code>libuv</code>库复制Node API的执行。他将不同的任务分配给不同的线程，形成一个Event Loop（事件循环），以异步的方式将任务的执行结果返回给V8引擎。</li>
+<li><p>V8引擎再将结果返回给用户</p>
+<p><img src="../../images/stacker/nodesystem.png" alt="nodesystem"></p>
+<h2 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h2><p>同步和异步关注的是消息通知机制  </p>
+<ul>
+<li>同步就是发出调用后，没有得到结果之前，改调用不返回，一旦调用返回，就等到返回值了。简而言之就是调用者主动等待这个调用的结果</li>
+<li>而异步则相反，调用者在发布调用后这个调用就直接返回了，所以没有返回结果。换句话说当一个异步过程调用发布后，调用者不会立即得到结果，而是调用发出后，被调用者通过状态、通知或回调函数处理这个调用。</li>
+</ul>
+<h2 id="3-8-阻塞与非阻塞"><a href="#3-8-阻塞与非阻塞" class="headerlink" title="3.8 阻塞与非阻塞"></a>3.8 阻塞与非阻塞</h2><p>阻塞和非阻塞关注的是程序在等待调用结果(消息、返回值)时的状态</p>
+<ul>
+<li>阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在等到结果之后才会返回。</li>
+<li>非阻塞调用指在不能立即得到结果之前，改调用不会阻塞当前线程</li>
+</ul>
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>同步异步取决于被调用者，阻塞非阻塞取决于调用者</p>
+</li>
 </ol>
+<ul>
+<li>同步阻塞</li>
+<li>异步阻塞</li>
+<li>同步非阻塞</li>
+<li>异步非阻塞</li>
+</ul>
+<h1 id="什么场合下应该考虑使用Node"><a href="#什么场合下应该考虑使用Node" class="headerlink" title="什么场合下应该考虑使用Node"></a>什么场合下应该考虑使用Node</h1><p>当应用程序需要处理大量并发的输入输出，而在客户端响应之前，应用框架并不需要进行非常复杂的处理。 </p>
+<ul>
+<li>聊天服务器</li>
+<li>电子商务网站</li>
+</ul>
 
       
     </div>
@@ -621,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Node能解决什么问题？"><span class="nav-number">1.</span> <span class="nav-text">Node能解决什么问题？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node是什么？"><span class="nav-number">2.</span> <span class="nav-text">Node是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node特点"><span class="nav-number">3.</span> <span class="nav-text">Node特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么JavaScript是单线程？"><span class="nav-number">3.1.</span> <span class="nav-text">为什么JavaScript是单线程？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器模型"><span class="nav-number">3.2.</span> <span class="nav-text">浏览器模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#除了JS线程和UI线程之外的其他线程"><span class="nav-number">3.3.</span> <span class="nav-text">除了JS线程和UI线程之外的其他线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务队列"><span class="nav-number">3.4.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event-Loop"><span class="nav-number">3.5.</span> <span class="nav-text">Event Loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js的Event-Loop"><span class="nav-number">3.6.</span> <span class="nav-text">Node.js的Event Loop</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Node能解决什么问题？"><span class="nav-number">1.</span> <span class="nav-text">Node能解决什么问题？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node是什么？"><span class="nav-number">2.</span> <span class="nav-text">Node是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node特点"><span class="nav-number">3.</span> <span class="nav-text">Node特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么JavaScript是单线程？"><span class="nav-number">3.1.</span> <span class="nav-text">为什么JavaScript是单线程？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器模型"><span class="nav-number">3.2.</span> <span class="nav-text">浏览器模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#除了JS线程和UI线程之外的其他线程"><span class="nav-number">3.3.</span> <span class="nav-text">除了JS线程和UI线程之外的其他线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务队列"><span class="nav-number">3.4.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event-Loop"><span class="nav-number">3.5.</span> <span class="nav-text">Event Loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js的Event-Loop"><span class="nav-number">3.6.</span> <span class="nav-text">Node.js的Event Loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步与异步"><span class="nav-number">3.7.</span> <span class="nav-text">同步与异步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-阻塞与非阻塞"><span class="nav-number">3.8.</span> <span class="nav-text">3.8 阻塞与非阻塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合"><span class="nav-number">3.9.</span> <span class="nav-text">组合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么场合下应该考虑使用Node"><span class="nav-number">4.</span> <span class="nav-text">什么场合下应该考虑使用Node</span></a></li></ol></div>
             
 
           </div>
