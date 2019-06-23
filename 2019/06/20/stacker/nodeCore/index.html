@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="控制台在Node.js中，使用console对象代表控制台(在操作系统中表现为一个操作系统指定的字符界面，比如 Window中的命令提示窗口)。  console.log console.info console.error 重定向到文件 console.warn console.dir console.time console.timeEnd console.trace console.asse">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-06-23T10:26:12.926Z">
+<meta property="og:updated_time" content="2019-06-23T10:30:17.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之core">
 <meta name="twitter:description" content="控制台在Node.js中，使用console对象代表控制台(在操作系统中表现为一个操作系统指定的字符界面，比如 Window中的命令提示窗口)。  console.log console.info console.error 重定向到文件 console.warn console.dir console.time console.timeEnd console.trace console.asse">
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:26:12" itemprop="dateModified" datetime="2019-06-23T10:26:12+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-23 10:30:17" itemprop="dateModified" datetime="2019-06-23T10:30:17+00:00">2019-06-23</time>
               
             
           </span>
@@ -393,6 +393,24 @@
 <li>console.timeEnd</li>
 <li>console.trace</li>
 <li>console.assert</li>
+</ul>
+<h1 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h1><ul>
+<li>全局作用域(global)可以定义一些不需要通过任何模块的加载即可使用的变量、函数或类</li>
+<li>定义全局变量时变量会成为global的属性</li>
+<li>永远不要不使用var关键字定义的变量，以免污染全局作用域 (会挂载在global)</li>
+<li>setTimeout clearTimeout</li>
+<li>setInterval clearInterval</li>
+<li>unref和ref</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let test = function()&#123;</span><br><span class="line">  console.log(&apos;callback&apos;);</span><br><span class="line">&#125;</span><br><span class="line">let timer = setInterval(test,1000);</span><br><span class="line">timer.unref();</span><br><span class="line">setTimeout(function()&#123;</span><br><span class="line">  timer.ref();</span><br><span class="line">&#125;,3000)</span><br></pre></td></tr></table></figure>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
+<li>require</li>
+<li>模块加载过程</li>
+<li>require.resolve</li>
+<li>模板缓存(require.cache)</li>
+<li>require.main</li>
+<li>模块导出<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module.exports, require, module, filename, dirname</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -592,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#控制台"><span class="nav-number">1.</span> <span class="nav-text">控制台</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#控制台"><span class="nav-number">1.</span> <span class="nav-text">控制台</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全局作用域"><span class="nav-number">2.</span> <span class="nav-text">全局作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a></li></ol></div>
             
 
           </div>
