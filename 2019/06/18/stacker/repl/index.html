@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="REPL在Node.js中为了使开发者方便测试JavaScript代码，提供了一个名为REPL的可交互式运行环境。开发者可以在该运行环境中输入任何JavaScript表达式，当用户按下回车键后，REPL运行环境将显示该表达式的运行结果。">
+  <meta name="description" content="REPL在Node.js中为了使开发者方便测试JavaScript代码，提供了一个名为REPL的可交互式运行环境。开发者可以在该运行环境中输入任何JavaScript表达式，当用户按下回车键后，REPL运行环境将显示该表达式的运行结果。 如何进入REPL在命令行容器中输入node命令并按下回车键，即可进入REPL运行环境。 REPL操作 变量的操作，声明普通变量和对象 eval 函数的书写 下划线">
 <meta name="keywords" content="stack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="全栈成长之REPL">
 <meta property="og:url" content="http://yoursite.com/2019/06/18/stacker/repl/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="REPL在Node.js中为了使开发者方便测试JavaScript代码，提供了一个名为REPL的可交互式运行环境。开发者可以在该运行环境中输入任何JavaScript表达式，当用户按下回车键后，REPL运行环境将显示该表达式的运行结果。">
+<meta property="og:description" content="REPL在Node.js中为了使开发者方便测试JavaScript代码，提供了一个名为REPL的可交互式运行环境。开发者可以在该运行环境中输入任何JavaScript表达式，当用户按下回车键后，REPL运行环境将显示该表达式的运行结果。 如何进入REPL在命令行容器中输入node命令并按下回车键，即可进入REPL运行环境。 REPL操作 变量的操作，声明普通变量和对象 eval 函数的书写 下划线">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-06-23T10:15:12.952Z">
+<meta property="og:updated_time" content="2019-06-23T10:21:39.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之REPL">
-<meta name="twitter:description" content="REPL在Node.js中为了使开发者方便测试JavaScript代码，提供了一个名为REPL的可交互式运行环境。开发者可以在该运行环境中输入任何JavaScript表达式，当用户按下回车键后，REPL运行环境将显示该表达式的运行结果。">
+<meta name="twitter:description" content="REPL在Node.js中为了使开发者方便测试JavaScript代码，提供了一个名为REPL的可交互式运行环境。开发者可以在该运行环境中输入任何JavaScript表达式，当用户按下回车键后，REPL运行环境将显示该表达式的运行结果。 如何进入REPL在命令行容器中输入node命令并按下回车键，即可进入REPL运行环境。 REPL操作 变量的操作，声明普通变量和对象 eval 函数的书写 下划线">
 
 
 
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:15:12" itemprop="dateModified" datetime="2019-06-23T10:15:12+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-23 10:21:39" itemprop="dateModified" datetime="2019-06-23T10:21:39+00:00">2019-06-23</time>
               
             
           </span>
@@ -382,7 +382,25 @@
       
 
       
-        <h1 id="REPL"><a href="#REPL" class="headerlink" title="REPL"></a>REPL</h1><p>在Node.js中为了使开发者方便测试JavaScript代码，提供了一个名为REPL的可交互式运行环境。开发者可以在该运行环境中输入任何JavaScript表达式，当用户按下回车键后，REPL运行环境将显示该表达式的运行结果。</p>
+        <h1 id="REPL"><a href="#REPL" class="headerlink" title="REPL"></a>REPL</h1><p>在<code>Node.js</code>中为了使开发者方便测试<code>JavaScript</code>代码，提供了一个名为REPL的可交互式运行环境。开发者可以在该运行环境中输入任何<code>JavaScript</code>表达式，当用户按下回车键后，REPL运行环境将显示该表达式的运行结果。</p>
+<h2 id="如何进入REPL"><a href="#如何进入REPL" class="headerlink" title="如何进入REPL"></a>如何进入REPL</h2><p>在命令行容器中输入<code>node</code>命令并按下回车键，即可进入REPL运行环境。</p>
+<h2 id="REPL操作"><a href="#REPL操作" class="headerlink" title="REPL操作"></a>REPL操作</h2><ul>
+<li>变量的操作，声明普通变量和对象</li>
+<li>eval</li>
+<li>函数的书写</li>
+<li>下划线访问最近使用的表达式</li>
+<li>多行书写</li>
+<li>REPL运行环境中的上下文对象  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let repl = require(&apos;repl&apos;);</span><br><span class="line">let con = repl.start().context;</span><br><span class="line">con.msg = &apos;hello&apos;;</span><br><span class="line">con.hello = function()&#123;</span><br><span class="line">    console.log(con.msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="REPL运行环境的基础命令"><a href="#REPL运行环境的基础命令" class="headerlink" title="REPL运行环境的基础命令"></a>REPL运行环境的基础命令</h2><ul>
+<li>.break 退出当前命令</li>
+<li>.clear 清除REPL运行环境上下文对象中保存的所以变量与函数</li>
+<li>.exit 退出REPL运行的环境</li>
+<li>.save 把输入的所有表达式保存到一个文件中</li>
+<li>.load 把所有的表达式加载到REPL运行环境中</li>
+<li>.help 查看帮助命令</li>
+</ul>
 
       
     </div>
@@ -581,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#REPL"><span class="nav-number">1.</span> <span class="nav-text">REPL</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#REPL"><span class="nav-number">1.</span> <span class="nav-text">REPL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何进入REPL"><span class="nav-number">1.1.</span> <span class="nav-text">如何进入REPL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REPL操作"><span class="nav-number">1.2.</span> <span class="nav-text">REPL操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REPL运行环境的基础命令"><span class="nav-number">1.3.</span> <span class="nav-text">REPL运行环境的基础命令</span></a></li></ol></li></ol></div>
             
 
           </div>
