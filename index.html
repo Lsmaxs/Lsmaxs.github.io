@@ -209,7 +209,6 @@
 
     
     
-    
       
     
 
@@ -224,7 +223,6 @@
           
           <li class="menu-item menu-item-archives">
 
-    
     
     
       
@@ -284,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/25/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lsmaxs">
@@ -304,7 +302,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/23/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+                <a href="/2019/06/25/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
               
             
           </h1>
@@ -329,7 +327,7 @@
                 
               
 
-              <time title="Created: 2019-06-23 10:33:27" itemprop="dateCreated datePublished" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+              <time title="Created: 2019-06-25 11:25:23" itemprop="dateCreated datePublished" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
             
 
             
@@ -493,7 +491,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:33:27" itemprop="dateModified" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-25 11:25:23" itemprop="dateModified" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
               
             
           </span>
@@ -559,7 +557,63 @@
 <li>模块导出<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module.exports, require, module, filename, dirname</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-
+<h1 id="process"><a href="#process" class="headerlink" title="process"></a>process</h1><ol>
+<li><p>process对象<br>在node.js里，process对象代表node.js应用程序，可以获取应用程序的用户，运行环境等各种信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">process.argv,forEach(function(item)&#123;</span><br><span class="line">    console.log(item)</span><br><span class="line">&#125;)</span><br><span class="line">process.on(&apos;exit&apos;,function()&#123;</span><br><span class="line">    console.log(&apos;clear)</span><br><span class="line">&#125;)</span><br><span class="line">process.on(&apos;uncaughtException&apos;,function(err)&#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(process.memoryUsage());</span><br><span class="line">console.log(process.cwd());</span><br><span class="line">console.log(__dirname);</span><br><span class="line">process.chdir(&apos;..&apos;);</span><br><span class="line">console.log(process.cwd());</span><br><span class="line">console.log(__dirname);</span><br><span class="line"></span><br><span class="line">function err()&#123;</span><br><span class="line"> throw new Error(&apos;报错了&apos;);</span><br><span class="line">&#125;</span><br><span class="line">err();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>process.nextTick &amp; setImmediate</p>
+</li>
+</ol>
+<ul>
+<li>process.nextTick()方法将callBack添加到 nextTick队列。一旦当前事件轮询队列的任务全部完成，在nextTick队列中的所有callbacks会被依次调用。</li>
+<li>setImmediate 预订立即执行的callback，它是在I/O事件的回调之后被触发<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">setImmediate(function()&#123;</span><br><span class="line">  console.log(&apos;4&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">setImmediate(function()&#123;</span><br><span class="line">  console.log(&apos;5&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">process.nextTick(function()&#123;</span><br><span class="line">  console.log(&apos;1&apos;);</span><br><span class="line">  process.nextTick(function()&#123;</span><br><span class="line">    console.log(&apos;2&apos;);</span><br><span class="line">    process.nextTick(function()&#123;</span><br><span class="line">      console.log(&apos;3&apos;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(&apos;next&apos;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="EventEmitter"><a href="#EventEmitter" class="headerlink" title="EventEmitter"></a>EventEmitter</h1><p>在node.js的用于实现各种事件处理的event模块中，定义了EventEmitter类，所以可能触发事件的对象都是一个继承自EventEmitter类的子类实例对象。 </p>
+<table>
+<thead>
+<tr>
+<th>方法名和参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addListener(event,listener)</td>
+<td>对指定事件绑定事件处理函数</td>
+</tr>
+<tr>
+<td>on(event,listener)</td>
+<td>对指定事件绑定事件处理函数</td>
+</tr>
+<tr>
+<td>once(event,listener)</td>
+<td>对指定事件指定只执行一次的事件处理函数</td>
+</tr>
+<tr>
+<td>removeListener(event,listener)</td>
+<td>对指定事件解除事件处理函数</td>
+</tr>
+<tr>
+<td>removeAllListener(event,listener)</td>
+<td>对指定事件解除所有的事件处理函数</td>
+</tr>
+<tr>
+<td>setMaxListener(event,listener)</td>
+<td>指定事件处理函数的最大数量.n为整数值，代表最大的可指定事件处理函数的数量</td>
+</tr>
+<tr>
+<td>listeners(event,listener)</td>
+<td>获取指定事件的所有事件处理函数</td>
+</tr>
+<tr>
+<td>emit(event,listener)</td>
+<td>手工触发指定事件</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">let EventEmitter = require(&apos;./events);</span><br><span class="line">let util = require(&apos;util);</span><br><span class="line">util.inherits(Bell,EventEmitter);</span><br><span class="line">function Bell()&#123;</span><br><span class="line">    EventEmitter.call(this)</span><br><span class="line">&#125;;</span><br><span class="line">let bell = new Bell;</span><br><span class="line">bell.on(&apos;newListener&apos;,function(type,listener)&#123;</span><br><span class="line">  console.log(`对 $&#123;type&#125;  事件增加$&#123;listener&#125;`);</span><br><span class="line">&#125;);</span><br><span class="line">bell.on(&apos;removeListener&apos;,function(type,listener)&#123;</span><br><span class="line">  console.log(`对$&#123;type&#125; 事件删除$&#123;listener&#125;`);</span><br><span class="line">&#125;);</span><br><span class="line">function teacherIn(thing)&#123;</span><br><span class="line">  console.log(`老师带$&#123;thing&#125;进教室`);</span><br><span class="line">&#125;</span><br><span class="line">function studentIn(thing)&#123;</span><br><span class="line">  console.log(`学生带$&#123;thing&#125;进教室`);</span><br><span class="line">&#125;</span><br><span class="line">function masterIn(thing)&#123;</span><br><span class="line">  console.log(`校长带$&#123;thing&#125;进教室`);</span><br><span class="line">&#125;</span><br><span class="line">bell.on(&apos;响&apos;,teacherIn);</span><br><span class="line">bell.on(&apos;响&apos;,studentIn);</span><br><span class="line">bell.once(&apos;响&apos;,masterIn);</span><br><span class="line">bell.emit(&apos;响&apos;,&apos;书&apos;);</span><br><span class="line">console.log(&apos;==============&apos;);</span><br><span class="line">bell.emit(&apos;响&apos;,&apos;书&apos;);</span><br><span class="line">console.log(&apos;==============&apos;);</span><br><span class="line">bell.removeAllListeners(&apos;响&apos;);</span><br><span class="line">console.log(&apos;==============&apos;);</span><br><span class="line">bell.emit(&apos;响&apos;,&apos;书&apos;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function EventEmitter()&#123;</span><br><span class="line">    this.events = &#123;&#125;; //会吧所有事件监听函数放到这个对象里保存</span><br><span class="line">    // 指定给一个事件类型增加的监听函数数量最多有多少个</span><br><span class="line">    this._maxListeners = 10;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">EventEmitter.prototype.setMaxListeners = function(maxListeners)&#123;</span><br><span class="line">    this._maxListeners = maxListeners;</span><br><span class="line">&#125;</span><br><span class="line">EventEmitter.prototype.listeners = function(event)&#123;</span><br><span class="line">    return this.events[event]</span><br><span class="line">&#125;</span><br><span class="line">EventEmitter.prototype.on = EventEmitter.prototype.addListener = function(type,listeners)&#123;</span><br><span class="line">    if(this.events[type])&#123;</span><br><span class="line">        this.events[type].push(listener);</span><br><span class="line">        if(this._maxListeners!=0&amp;&amp; this.events[type].length &gt; this._maxListeners)&#123;</span><br><span class="line">            console.error(`MaxListenersExceededWarning: Possible EventEmitter memory leak detected. $&#123;this.events[type].length&#125; $&#123;type&#125; listeners added. Use emitter.setMaxListeners() to increase limit`);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        //如果以前没有添加到此事件的监听函数，则赋一个数组</span><br><span class="line">        this.events[type] = [listener];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -677,7 +731,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:33:27" itemprop="dateModified" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-25 11:25:23" itemprop="dateModified" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
               
             
           </span>
@@ -850,7 +904,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:33:27" itemprop="dateModified" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-25 11:25:23" itemprop="dateModified" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
               
             
           </span>
@@ -1029,7 +1083,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:33:27" itemprop="dateModified" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-25 11:25:23" itemprop="dateModified" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
               
             
           </span>
@@ -1249,7 +1303,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:33:27" itemprop="dateModified" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-25 11:25:23" itemprop="dateModified" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
               
             
           </span>
@@ -1479,7 +1533,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:33:27" itemprop="dateModified" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-25 11:25:23" itemprop="dateModified" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
               
             
           </span>
@@ -1635,7 +1689,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:33:27" itemprop="dateModified" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-25 11:25:23" itemprop="dateModified" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
               
             
           </span>
@@ -2005,7 +2059,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:33:27" itemprop="dateModified" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-25 11:25:23" itemprop="dateModified" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
               
             
           </span>
@@ -2186,7 +2240,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 10:33:27" itemprop="dateModified" datetime="2019-06-23T10:33:27+00:00">2019-06-23</time>
+                <time title="Modified: 2019-06-25 11:25:23" itemprop="dateModified" datetime="2019-06-25T11:25:23+00:00">2019-06-25</time>
               
             
           </span>
