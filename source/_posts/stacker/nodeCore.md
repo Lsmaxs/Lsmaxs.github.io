@@ -49,3 +49,130 @@ setTimeout(function(){
 ```
 module.exports, require, module, filename, dirname
 ```
+
+# process 
+1. process对象
+在node.js里，process对象代表node.js应用程序，可以获取应用程序的用户，运行环境等各种信息
+```
+process.argv,forEach(function(item){
+    console.log(item)
+})
+process.on('exit',function(){
+    console.log('clear)
+})
+process.on('uncaughtException',function(err){
+    console.log(err);
+})
+
+console.log(process.memoryUsage());
+console.log(process.cwd());
+console.log(__dirname);
+process.chdir('..');
+console.log(process.cwd());
+console.log(__dirname);
+
+function err(){
+ throw new Error('报错了');
+}
+err();
+```
+
+2. process.nextTick & setImmediate
+- process.nextTick()方法将callBack添加到 nextTick队列。一旦当前事件轮询队列的任务全部完成，在nextTick队列中的所有callbacks会被依次调用。
+- setImmediate 预订立即执行的callback，它是在I/O事件的回调之后被触发
+```
+setImmediate(function(){
+  console.log('4');
+});
+setImmediate(function(){
+  console.log('5');
+});
+process.nextTick(function(){
+  console.log('1');
+  process.nextTick(function(){
+    console.log('2');
+    process.nextTick(function(){
+      console.log('3');
+    });
+  });
+});
+
+console.log('next');
+
+```
+
+# EventEmitter
+
+在node.js的用于实现各种事件处理的event模块中，定义了EventEmitter类，所以可能触发事件的对象都是一个继承自EventEmitter类的子类实例对象。 
+
+|方法名和参数 | 描述 | 
+|--- |--- |
+| addListener(event,listener) | 对指定事件绑定事件处理函数 |
+| on(event,listener) | 对指定事件绑定事件处理函数 |
+| once(event,listener) | 对指定事件指定只执行一次的事件处理函数 |
+| removeListener(event,listener) | 对指定事件解除事件处理函数 |
+| removeAllListener(event,listener) | 对指定事件解除所有的事件处理函数 |
+| setMaxListener(event,listener) | 指定事件处理函数的最大数量.n为整数值，代表最大的可指定事件处理函数的数量 |
+| listeners(event,listener) | 获取指定事件的所有事件处理函数 |
+| emit(event,listener) | 手工触发指定事件 |
+  
+```
+let EventEmitter = require('./events);
+let util = require('util);
+util.inherits(Bell,EventEmitter);
+function Bell(){
+    EventEmitter.call(this)
+};
+let bell = new Bell;
+bell.on('newListener',function(type,listener){
+  console.log(`对 ${type}  事件增加${listener}`);
+});
+bell.on('removeListener',function(type,listener){
+  console.log(`对${type} 事件删除${listener}`);
+});
+function teacherIn(thing){
+  console.log(`老师带${thing}进教室`);
+}
+function studentIn(thing){
+  console.log(`学生带${thing}进教室`);
+}
+function masterIn(thing){
+  console.log(`校长带${thing}进教室`);
+}
+bell.on('响',teacherIn);
+bell.on('响',studentIn);
+bell.once('响',masterIn);
+bell.emit('响','书');
+console.log('==============');
+bell.emit('响','书');
+console.log('==============');
+bell.removeAllListeners('响');
+console.log('==============');
+bell.emit('响','书');
+```
+
+```
+function EventEmitter(){
+    this.events = {}; //会吧所有事件监听函数放到这个对象里保存
+    // 指定给一个事件类型增加的监听函数数量最多有多少个
+    this._maxListeners = 10;
+
+}
+EventEmitter.prototype.setMaxListeners = function(maxListeners){
+    this._maxListeners = maxListeners;
+}
+EventEmitter.prototype.listeners = function(event){
+    return this.events[event]
+}
+EventEmitter.prototype.on = EventEmitter.prototype.addListener = function(type,listeners){
+    if(this.events[type]){
+        this.events[type].push(listener);
+        if(this._maxListeners!=0&& this.events[type].length > this._maxListeners){
+            console.error(`MaxListenersExceededWarning: Possible EventEmitter memory leak detected. ${this.events[type].length} ${type} listeners added. Use emitter.setMaxListeners() to increase limit`);
+        }
+    }else{
+        //如果以前没有添加到此事件的监听函数，则赋一个数组
+        this.events[type] = [listener];
+    }
+}
+```
