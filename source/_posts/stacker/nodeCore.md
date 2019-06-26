@@ -176,3 +176,27 @@ EventEmitter.prototype.on = EventEmitter.prototype.addListener = function(type,l
     }
 }
 ```
+# util
+```
+var util = require('util');
+//util.inherit();
+console.log(util.inspect({name:'zfpx'}));
+console.log(util.isArray([]));
+console.log(util.isRegExp(/\d/));
+console.log(util.isDate(new Date()));
+console.log(util.isError(new Error));
+```
+
+# node断点调试
+V8 提供了一个强大的调试器，可以通过 TCP 协议从外部访问。Nodejs提供了一个内建调试器来帮助开发者调试应用程序。想要开启调试器我们需要在代码中加入debugger标签，当Nodejs执行到debugger标签时会自动暂停（debugger标签相当于在代码中开启一个断点）。
+
+|命令|	用途|
+| --- | ---|
+| c	|继续执行到下一个断点处  |
+| next,n |	单步执行  |
+| step,s |	单步进入函数  |
+| out,o |	退出当前函数  |
+| setBreakpoint(10),sb(10) |	在第10行设置断点  |
+| repl |	打开求值环境，ctrl_c退回debug模式  |
+| watch(exp) |	把表达式添加监视列表  |
+| watchers |	显示所有表达式的值  |
