@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="MAC查看端口占用lsof123lsof -i:protlsof -i:8080 netstat123netstat -antp | grep portnetstat -antp | grep 8080 进程杀死进程查看进程占用123lsof -i tcp:8080```  该命令会显示占用8080端口的进程，有其PID，可以通过PID关掉该进程 kill PID`">
+  <meta name="description" content="JS模块化方面的不足 JS没有模块系统，不支持封闭的作用域和依赖管理 没有标准库，没有文件系统和IO流API 也没有包管理系统  CommonJS规范 封装功能 封闭作用域 可能解决依赖问题 工作效率更高，重构方便  Node中的CommonJS">
 <meta name="keywords" content="stack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="全栈成长之Command">
-<meta property="og:url" content="http://yoursite.com/2019/05/22/stacker/command/index.html">
+<meta property="og:title" content="全栈成长之JsModule">
+<meta property="og:url" content="http://yoursite.com/2019/05/22/stacker/jsModule/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="MAC查看端口占用lsof123lsof -i:protlsof -i:8080 netstat123netstat -antp | grep portnetstat -antp | grep 8080 进程杀死进程查看进程占用123lsof -i tcp:8080```  该命令会显示占用8080端口的进程，有其PID，可以通过PID关掉该进程 kill PID`">
+<meta property="og:description" content="JS模块化方面的不足 JS没有模块系统，不支持封闭的作用域和依赖管理 没有标准库，没有文件系统和IO流API 也没有包管理系统  CommonJS规范 封装功能 封闭作用域 可能解决依赖问题 工作效率更高，重构方便  Node中的CommonJS">
 <meta property="og:locale" content="CN">
 <meta property="og:updated_time" content="2019-06-27T11:56:45.886Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="全栈成长之Command">
-<meta name="twitter:description" content="MAC查看端口占用lsof123lsof -i:protlsof -i:8080 netstat123netstat -antp | grep portnetstat -antp | grep 8080 进程杀死进程查看进程占用123lsof -i tcp:8080```  该命令会显示占用8080端口的进程，有其PID，可以通过PID关掉该进程 kill PID`">
+<meta name="twitter:title" content="全栈成长之JsModule">
+<meta name="twitter:description" content="JS模块化方面的不足 JS没有模块系统，不支持封闭的作用域和依赖管理 没有标准库，没有文件系统和IO流API 也没有包管理系统  CommonJS规范 封装功能 封闭作用域 可能解决依赖问题 工作效率更高，重构方便  Node中的CommonJS">
 
 
 
@@ -113,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/22/stacker/command/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/22/stacker/jsModule/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>全栈成长之Command | Hexo</title>
+  <title>全栈成长之JsModule | Hexo</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/stacker/command/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/stacker/jsModule/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lsmaxs">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">全栈成长之Command
+          <h1 class="post-title" itemprop="name headline">全栈成长之JsModule
 
               
             
@@ -380,11 +380,18 @@
       
 
       
-        <h1 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h1><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><h3 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:prot</span><br><span class="line"></span><br><span class="line">lsof -i:8080</span><br></pre></td></tr></table></figure>
-<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -antp | grep port</span><br><span class="line"></span><br><span class="line">netstat -antp | grep 8080</span><br></pre></td></tr></table></figure>
-<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h3><p>查看进程占用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsof -i tcp:8080</span><br><span class="line">```  </span><br><span class="line">该命令会显示占用8080端口的进程，有其PID，可以通过PID关掉该进程</span><br></pre></td></tr></table></figure></p>
-<p>kill PID<br><code>`</code>  </p>
-
+        <h1 id="JS模块化方面的不足"><a href="#JS模块化方面的不足" class="headerlink" title="JS模块化方面的不足"></a>JS模块化方面的不足</h1><ul>
+<li>JS没有模块系统，不支持封闭的作用域和依赖管理</li>
+<li>没有标准库，没有文件系统和IO流API</li>
+<li>也没有包管理系统</li>
+</ul>
+<h1 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h1><ul>
+<li>封装功能</li>
+<li>封闭作用域</li>
+<li>可能解决依赖问题</li>
+<li>工作效率更高，重构方便</li>
+</ul>
+<h1 id="Node中的CommonJS"><a href="#Node中的CommonJS" class="headerlink" title="Node中的CommonJS"></a>Node中的CommonJS</h1>
       
     </div>
 
@@ -423,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/22/stacker/jsModule/" rel="next" title="全栈成长之JsModule">
-                <i class="fa fa-chevron-left"></i> 全栈成长之JsModule
+              <a href="/2019/05/21/stacker/async/" rel="next" title="全栈成长之Async">
+                <i class="fa fa-chevron-left"></i> 全栈成长之Async
               </a>
             
           </div>
@@ -433,8 +440,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/25/stacker/module/" rel="prev" title="全栈成长之Module">
-                全栈成长之Module <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/22/stacker/command/" rel="prev" title="全栈成长之Command">
+                全栈成长之Command <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -582,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC"><span class="nav-number">1.</span> <span class="nav-text">MAC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口占用"><span class="nav-number">1.1.</span> <span class="nav-text">查看端口占用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lsof"><span class="nav-number">1.1.1.</span> <span class="nav-text">lsof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#netstat"><span class="nav-number">1.1.2.</span> <span class="nav-text">netstat</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">1.2.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#杀死进程"><span class="nav-number">1.2.1.</span> <span class="nav-text">杀死进程</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS模块化方面的不足"><span class="nav-number">1.</span> <span class="nav-text">JS模块化方面的不足</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CommonJS规范"><span class="nav-number">2.</span> <span class="nav-text">CommonJS规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node中的CommonJS"><span class="nav-number">3.</span> <span class="nav-text">Node中的CommonJS</span></a></li></ol></div>
             
 
           </div>
