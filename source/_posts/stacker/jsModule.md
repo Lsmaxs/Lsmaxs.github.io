@@ -45,4 +45,4 @@ tags: stack
 - 第三方模块的查询路径包括`module.paths`和全局目录
 
 ### 全局目录
-window如果在环境变量中设置了`NODE_PATH`变量，并将变量设置为一个有效的磁盘目录，require在本地找不到此模块时向在此目录下找这个模块。 UNIX操作系统中会从 `$HOME/.node_modules $HOME/.node_libraries`目录下寻找
+window如果在环境变量中设置了`NODE_PATH`变量，并将变量设置为一个有效的磁盘目录，require在本地找不到此模块时向在此目录下找这个模块。 UNIX操作系统中会从 `$HOME/.node_modules $HOME/.node_libraries`目录下寻找.
