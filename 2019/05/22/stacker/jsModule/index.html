@@ -44,19 +44,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
-<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
 
 
 
@@ -69,7 +69,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '7.1.2',
+    version: '7.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="JS模块化方面的不足 JS没有模块系统，不支持封闭的作用域和依赖管理 没有标准库，没有文件系统和IO流API 也没有包管理系统  CommonJS规范 封装功能 封闭作用域 可能解决依赖问题 工作效率更高，重构方便  Node中的CommonJS 在node.js 里，模块划分所有的功能，每个JS都是一个模块123456(function(exports,require,module,__file">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-07-01T12:36:05.699Z">
+<meta property="og:updated_time" content="2019-07-02T10:42:24.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之JsModule">
 <meta name="twitter:description" content="JS模块化方面的不足 JS没有模块系统，不支持封闭的作用域和依赖管理 没有标准库，没有文件系统和IO流API 也没有包管理系统  CommonJS规范 封装功能 封闭作用域 可能解决依赖问题 工作效率更高，重构方便  Node中的CommonJS 在node.js 里，模块划分所有的功能，每个JS都是一个模块123456(function(exports,require,module,__file">
@@ -344,7 +344,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-01 12:36:05" itemprop="dateModified" datetime="2019-07-01T12:36:05+00:00">2019-07-01</time>
+                <time title="Modified: 2019-07-02 10:42:24" itemprop="dateModified" datetime="2019-07-02T10:42:24+00:00">2019-07-02</time>
               </span>
             
           
@@ -411,6 +411,10 @@
 <li>第三方模块的查询路径包括<code>module.paths</code>和全局目录</li>
 </ul>
 <h3 id="全局目录"><a href="#全局目录" class="headerlink" title="全局目录"></a>全局目录</h3><p>window如果在环境变量中设置了<code>NODE_PATH</code>变量，并将变量设置为一个有效的磁盘目录，require在本地找不到此模块时向在此目录下找这个模块。 UNIX操作系统中会从 <code>$HOME/.node_modules $HOME/.node_libraries</code>目录下寻找.</p>
+<h2 id="模块加载器"><a href="#模块加载器" class="headerlink" title="模块加载器"></a>模块加载器</h2><h2 id="文件模块查找规则"><a href="#文件模块查找规则" class="headerlink" title="文件模块查找规则"></a>文件模块查找规则</h2><h1 id="从模块外部访问模块内的成员"><a href="#从模块外部访问模块内的成员" class="headerlink" title="从模块外部访问模块内的成员"></a>从模块外部访问模块内的成员</h1><ul>
+<li>使用exports对象</li>
+<li>使用module.exports导出引用类型</li>
+</ul>
 
       
     </div>
@@ -609,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS模块化方面的不足"><span class="nav-number">1.</span> <span class="nav-text">JS模块化方面的不足</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CommonJS规范"><span class="nav-number">2.</span> <span class="nav-text">CommonJS规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node中的CommonJS"><span class="nav-number">3.</span> <span class="nav-text">Node中的CommonJS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块分类"><span class="nav-number">4.</span> <span class="nav-text">模块分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原生模块"><span class="nav-number">4.1.</span> <span class="nav-text">原生模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件模式"><span class="nav-number">4.2.</span> <span class="nav-text">文件模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三方模块"><span class="nav-number">4.3.</span> <span class="nav-text">第三方模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局目录"><span class="nav-number">4.3.1.</span> <span class="nav-text">全局目录</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS模块化方面的不足"><span class="nav-number">1.</span> <span class="nav-text">JS模块化方面的不足</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CommonJS规范"><span class="nav-number">2.</span> <span class="nav-text">CommonJS规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node中的CommonJS"><span class="nav-number">3.</span> <span class="nav-text">Node中的CommonJS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块分类"><span class="nav-number">4.</span> <span class="nav-text">模块分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原生模块"><span class="nav-number">4.1.</span> <span class="nav-text">原生模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件模式"><span class="nav-number">4.2.</span> <span class="nav-text">文件模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三方模块"><span class="nav-number">4.3.</span> <span class="nav-text">第三方模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局目录"><span class="nav-number">4.3.1.</span> <span class="nav-text">全局目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块加载器"><span class="nav-number">4.4.</span> <span class="nav-text">模块加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件模块查找规则"><span class="nav-number">4.5.</span> <span class="nav-text">文件模块查找规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从模块外部访问模块内的成员"><span class="nav-number">5.</span> <span class="nav-text">从模块外部访问模块内的成员</span></a></li></ol></div>
             
 
           </div>
@@ -650,7 +654,7 @@
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
 
 
 
@@ -728,30 +732,30 @@
   
 
 
-  <script src="/js/utils.js?v=7.1.2"></script>
+  <script src="/js/utils.js?v=7.2.0"></script>
 
-  <script src="/js/motion.js?v=7.1.2"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
 
 
 
   
-  <script src="/js/scrollspy.js?v=7.1.2"></script>
-<script src="/js/post-details.js?v=7.1.2"></script>
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
 
 
 
   
 
 
-  <script src="/js/next-boot.js?v=7.1.2"></script>
+  <script src="/js/next-boot.js?v=7.2.0"></script>
 
 
   
