@@ -46,3 +46,12 @@ tags: stack
 
 ### 全局目录
 window如果在环境变量中设置了`NODE_PATH`变量，并将变量设置为一个有效的磁盘目录，require在本地找不到此模块时向在此目录下找这个模块。 UNIX操作系统中会从 `$HOME/.node_modules $HOME/.node_libraries`目录下寻找.
+
+## 模块加载器
+
+## 文件模块查找规则
+
+
+# 从模块外部访问模块内的成员
+- 使用exports对象
+- 使用module.exports导出引用类型
