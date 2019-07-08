@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/stacker/jsModule/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/stacker/command/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lsmaxs">
@@ -302,7 +302,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/22/stacker/jsModule/" class="post-title-link" itemprop="url">全栈成长之JsModule</a>
+                <a href="/2019/05/22/stacker/command/" class="post-title-link" itemprop="url">全栈成长之Command</a>
               
             
           </h1>
@@ -342,7 +342,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-02 10:42:24" itemprop="dateModified" datetime="2019-07-02T10:42:24+00:00">2019-07-02</time>
+                <time title="Modified: 2019-07-08 04:22:34" itemprop="dateModified" datetime="2019-07-08T04:22:34+00:00">2019-07-08</time>
               </span>
             
           
@@ -381,40 +381,10 @@
       
         
           
-            <h1 id="JS模块化方面的不足"><a href="#JS模块化方面的不足" class="headerlink" title="JS模块化方面的不足"></a>JS模块化方面的不足</h1><ul>
-<li>JS没有模块系统，不支持封闭的作用域和依赖管理</li>
-<li>没有标准库，没有文件系统和IO流API</li>
-<li>也没有包管理系统</li>
-</ul>
-<h1 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h1><ul>
-<li>封装功能</li>
-<li>封闭作用域</li>
-<li>可能解决依赖问题</li>
-<li>工作效率更高，重构方便</li>
-</ul>
-<h1 id="Node中的CommonJS"><a href="#Node中的CommonJS" class="headerlink" title="Node中的CommonJS"></a>Node中的CommonJS</h1><ul>
-<li>在node.js 里，模块划分所有的功能，每个JS都是一个模块<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(function(exports,require,module,__filename,__dirname)&#123;</span><br><span class="line">  exports = module.exports=&#123;&#125;</span><br><span class="line">  exports.name = &apos;zfpx&apos;;</span><br><span class="line">  exports = &#123;name:&apos;zfpx&apos;&#125;;</span><br><span class="line">  return module.exports;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="模块分类"><a href="#模块分类" class="headerlink" title="模块分类"></a>模块分类</h1><h2 id="原生模块"><a href="#原生模块" class="headerlink" title="原生模块"></a>原生模块</h2><p><code>http</code> <code>path</code> <code>fs</code> <code>util</code> <code>events</code> 编译成二进制,加载速度最快，原来模块通过名称来加载</p>
-<h2 id="文件模式"><a href="#文件模式" class="headerlink" title="文件模式"></a>文件模式</h2><p>在硬盘的某个位置，加载速度非常慢，文件模块通过名称或路径来加载<br>文件模块的后缀有三种</p>
-<ul>
-<li>后缀名为.js的JavaScript脚本文件,需要先读入内存再运行</li>
-<li>后缀名为.json的JSON文件,fs 读入内存 转化成JSON对象</li>
-<li>后缀名为.node的经过编译后的二进制C/C++扩展模块文件，可以直接使用  <blockquote>
-<p>一般自己写的通过路径来加载,别人写的通过名称去当前目录或全局的node_modules下面去找</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="第三方模块"><a href="#第三方模块" class="headerlink" title="第三方模块"></a>第三方模块</h2><ul>
-<li>如果require函数只指定名称则视为从<code>node_modules</code>下面加载文件，这样的话你可以移动模块而不需要修改引用的模块路径</li>
-<li>第三方模块的查询路径包括<code>module.paths</code>和全局目录</li>
-</ul>
-<h3 id="全局目录"><a href="#全局目录" class="headerlink" title="全局目录"></a>全局目录</h3><p>window如果在环境变量中设置了<code>NODE_PATH</code>变量，并将变量设置为一个有效的磁盘目录，require在本地找不到此模块时向在此目录下找这个模块。 UNIX操作系统中会从 <code>$HOME/.node_modules $HOME/.node_libraries</code>目录下寻找.</p>
-<h2 id="模块加载器"><a href="#模块加载器" class="headerlink" title="模块加载器"></a>模块加载器</h2><h2 id="文件模块查找规则"><a href="#文件模块查找规则" class="headerlink" title="文件模块查找规则"></a>文件模块查找规则</h2><h1 id="从模块外部访问模块内的成员"><a href="#从模块外部访问模块内的成员" class="headerlink" title="从模块外部访问模块内的成员"></a>从模块外部访问模块内的成员</h1><ul>
-<li>使用exports对象</li>
-<li>使用module.exports导出引用类型</li>
-</ul>
+            <h1 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h1><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><h3 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:prot</span><br><span class="line"></span><br><span class="line">lsof -i:8080</span><br></pre></td></tr></table></figure>
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -antp | grep port</span><br><span class="line"></span><br><span class="line">netstat -antp | grep 8080</span><br></pre></td></tr></table></figure>
+<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h3><p>查看进程占用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsof -i tcp:8080</span><br><span class="line">```  </span><br><span class="line">该命令会显示占用8080端口的进程，有其PID，可以通过PID关掉该进程</span><br></pre></td></tr></table></figure></p>
+<p>kill PID<br><code>`</code>  </p>
 
           
         
@@ -531,7 +501,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-02 10:42:24" itemprop="dateModified" datetime="2019-07-02T10:42:24+00:00">2019-07-02</time>
+                <time title="Modified: 2019-07-08 04:22:34" itemprop="dateModified" datetime="2019-07-08T04:22:34+00:00">2019-07-08</time>
               </span>
             
           
@@ -729,7 +699,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-02 10:42:24" itemprop="dateModified" datetime="2019-07-02T10:42:24+00:00">2019-07-02</time>
+                <time title="Modified: 2019-07-08 04:22:34" itemprop="dateModified" datetime="2019-07-08T04:22:34+00:00">2019-07-08</time>
               </span>
             
           
@@ -952,7 +922,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-02 10:42:24" itemprop="dateModified" datetime="2019-07-02T10:42:24+00:00">2019-07-02</time>
+                <time title="Modified: 2019-07-08 04:22:34" itemprop="dateModified" datetime="2019-07-08T04:22:34+00:00">2019-07-08</time>
               </span>
             
           
@@ -1108,7 +1078,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-02 10:42:24" itemprop="dateModified" datetime="2019-07-02T10:42:24+00:00">2019-07-02</time>
+                <time title="Modified: 2019-07-08 04:22:34" itemprop="dateModified" datetime="2019-07-08T04:22:34+00:00">2019-07-08</time>
               </span>
             
           
