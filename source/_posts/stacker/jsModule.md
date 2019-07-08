@@ -51,7 +51,6 @@ window如果在环境变量中设置了`NODE_PATH`变量，并将变量设置为
 
 ## 文件模块查找规则
 
-
 # 从模块外部访问模块内的成员
 - 使用exports对象
 - 使用module.exports导出引用类型
