@@ -89,10 +89,6 @@
 </script>
 
 
-  
-
-
-
 
   <meta name="description" content="JS模块化方面的不足 JS没有模块系统，不支持封闭的作用域和依赖管理 没有标准库，没有文件系统和IO流API 也没有包管理系统  CommonJS规范 封装功能 封闭作用域 可能解决依赖问题 工作效率更高，重构方便  Node中的CommonJS 在node.js 里，模块划分所有的功能，每个JS都是一个模块123456(function(exports,require,module,__file">
 <meta name="keywords" content="stack">
@@ -102,7 +98,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="JS模块化方面的不足 JS没有模块系统，不支持封闭的作用域和依赖管理 没有标准库，没有文件系统和IO流API 也没有包管理系统  CommonJS规范 封装功能 封闭作用域 可能解决依赖问题 工作效率更高，重构方便  Node中的CommonJS 在node.js 里，模块划分所有的功能，每个JS都是一个模块123456(function(exports,require,module,__file">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-07-08T04:22:34.028Z">
+<meta property="og:updated_time" content="2019-07-11T09:59:05.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之JsModule">
 <meta name="twitter:description" content="JS模块化方面的不足 JS没有模块系统，不支持封闭的作用域和依赖管理 没有标准库，没有文件系统和IO流API 也没有包管理系统  CommonJS规范 封装功能 封闭作用域 可能解决依赖问题 工作效率更高，重构方便  Node中的CommonJS 在node.js 里，模块划分所有的功能，每个JS都是一个模块123456(function(exports,require,module,__file">
@@ -253,10 +249,6 @@
 
 
 
-  
-
-
-
 </div>
     </header>
 
@@ -344,7 +336,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-08 04:22:34" itemprop="dateModified" datetime="2019-07-08T04:22:34+00:00">2019-07-08</time>
+                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
               </span>
             
           
@@ -357,6 +349,8 @@
           
 
           
+          
+
           
 
           
@@ -415,10 +409,23 @@
 <li>使用exports对象</li>
 <li>使用module.exports导出引用类型</li>
 </ul>
+<h1 id="模块对象的属性"><a href="#模块对象的属性" class="headerlink" title="模块对象的属性"></a>模块对象的属性</h1><ul>
+<li>module.id</li>
+<li>module.filename</li>
+<li>module.loaded</li>
+<li>module.parent</li>
+<li>module.children</li>
+<li>module.paths</li>
+</ul>
+<h1 id="包"><a href="#包" class="headerlink" title="包"></a>包</h1><p>在<code>Node.js</code>中，可以通过包来对一组具有相互依赖关系的模块进行统一管理，通过包可以把某个独立功能封装起来 每个项目的根目录下面，一般都有一个<code>package.json</code>文件，定义了这个项目所需要的各种模块，以及项目的配置信息（比如名称、版本、许可证等元数据）。<code>npm install</code>命令根据这个配置文件，自动下载所需的模块，也就是配置项目所需的运行和开发环境。<br>| 项目 | 描述 |<br>| – | – |<br>| name | 项目名称 |<br>| version | 版本号 |<br>| description | 项目描述 |<br>| keywords | 关键词 |<br>| homepage | 项目url主页 |<br>| bugs | 项目问题反馈的Url或email配置 |<br>| license | 项目许可证 |<br>| author | 作者和贡献者 |<br>| main | 主文件 |<br>| bin | 项目用到的可执行文件配置 |<br>| repository | 项目代码存在地方 |<br>| script | 声明一系列npm脚本指令 |<br>| dependencies | 项目在生成环境中依赖的包 |<br>| devDependencies | 项目在生成环境中依赖的包 |<br>| peerDependencies | 应用运行依赖的宿主包 |</p>
 
       
     </div>
 
+    
+
+    
+      
     
 
     
@@ -454,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/22/stacker/command/" rel="next" title="全栈成长之Command">
-                <i class="fa fa-chevron-left"></i> 全栈成长之Command
+              <a href="/2019/05/21/stacker/async/" rel="next" title="全栈成长之Async">
+                <i class="fa fa-chevron-left"></i> 全栈成长之Async
               </a>
             
           </div>
@@ -464,8 +471,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/25/stacker/module/" rel="prev" title="全栈成长之Module">
-                全栈成长之Module <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/22/stacker/command/" rel="prev" title="全栈成长之Command">
+                全栈成长之Command <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,10 +602,6 @@
           
 
           
-            
-          
-          
-
         </div>
       </div>
 
@@ -613,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS模块化方面的不足"><span class="nav-number">1.</span> <span class="nav-text">JS模块化方面的不足</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CommonJS规范"><span class="nav-number">2.</span> <span class="nav-text">CommonJS规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node中的CommonJS"><span class="nav-number">3.</span> <span class="nav-text">Node中的CommonJS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块分类"><span class="nav-number">4.</span> <span class="nav-text">模块分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原生模块"><span class="nav-number">4.1.</span> <span class="nav-text">原生模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件模式"><span class="nav-number">4.2.</span> <span class="nav-text">文件模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三方模块"><span class="nav-number">4.3.</span> <span class="nav-text">第三方模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局目录"><span class="nav-number">4.3.1.</span> <span class="nav-text">全局目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块加载器"><span class="nav-number">4.4.</span> <span class="nav-text">模块加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件模块查找规则"><span class="nav-number">4.5.</span> <span class="nav-text">文件模块查找规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从模块外部访问模块内的成员"><span class="nav-number">5.</span> <span class="nav-text">从模块外部访问模块内的成员</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS模块化方面的不足"><span class="nav-number">1.</span> <span class="nav-text">JS模块化方面的不足</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CommonJS规范"><span class="nav-number">2.</span> <span class="nav-text">CommonJS规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node中的CommonJS"><span class="nav-number">3.</span> <span class="nav-text">Node中的CommonJS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块分类"><span class="nav-number">4.</span> <span class="nav-text">模块分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原生模块"><span class="nav-number">4.1.</span> <span class="nav-text">原生模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件模式"><span class="nav-number">4.2.</span> <span class="nav-text">文件模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三方模块"><span class="nav-number">4.3.</span> <span class="nav-text">第三方模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局目录"><span class="nav-number">4.3.1.</span> <span class="nav-text">全局目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块加载器"><span class="nav-number">4.4.</span> <span class="nav-text">模块加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件模块查找规则"><span class="nav-number">4.5.</span> <span class="nav-text">文件模块查找规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从模块外部访问模块内的成员"><span class="nav-number">5.</span> <span class="nav-text">从模块外部访问模块内的成员</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块对象的属性"><span class="nav-number">6.</span> <span class="nav-text">模块对象的属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#包"><span class="nav-number">7.</span> <span class="nav-text">包</span></a></li></ol></div>
             
 
           </div>
@@ -703,9 +706,8 @@
 
 
 
-
-
-
+  
+  
 
 
 
@@ -729,7 +731,6 @@
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
-  
 
 
   <script src="/js/utils.js?v=7.2.0"></script>
@@ -752,29 +753,8 @@
 
 
 
-  
-
-
   <script src="/js/next-boot.js?v=7.2.0"></script>
 
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
-
-
-
-
   
 
   
@@ -784,6 +764,15 @@
   
 
   
+
+
+  
+
+
+  
+
+
+
 
   
 
@@ -800,6 +789,19 @@
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
   
 
