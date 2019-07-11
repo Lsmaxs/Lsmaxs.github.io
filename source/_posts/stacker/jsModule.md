@@ -54,3 +54,31 @@ window如果在环境变量中设置了`NODE_PATH`变量，并将变量设置为
 # 从模块外部访问模块内的成员
 - 使用exports对象
 - 使用module.exports导出引用类型
+
+# 模块对象的属性
+- module.id
+- module.filename
+- module.loaded
+- module.parent
+- module.children
+- module.paths
+
+# 包
+在`Node.js`中，可以通过包来对一组具有相互依赖关系的模块进行统一管理，通过包可以把某个独立功能封装起来 每个项目的根目录下面，一般都有一个`package.json`文件，定义了这个项目所需要的各种模块，以及项目的配置信息（比如名称、版本、许可证等元数据）。`npm install`命令根据这个配置文件，自动下载所需的模块，也就是配置项目所需的运行和开发环境。
+| 项目 | 描述 |
+| -- | -- |
+| name | 项目名称 |
+| version | 版本号 |
+| description | 项目描述 |
+| keywords | 关键词 |
+| homepage | 项目url主页 |
+| bugs | 项目问题反馈的Url或email配置 |
+| license | 项目许可证 |
+| author | 作者和贡献者 |
+| main | 主文件 |
+| bin | 项目用到的可执行文件配置 |
+| repository | 项目代码存在地方 |
+| script | 声明一系列npm脚本指令 |
+| dependencies | 项目在生成环境中依赖的包 |
+| devDependencies | 项目在生成环境中依赖的包 |
+| peerDependencies | 应用运行依赖的宿主包 |
