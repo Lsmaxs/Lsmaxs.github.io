@@ -274,6 +274,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/stacker/module/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lsmaxs">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/25/stacker/module/" class="post-title-link" itemprop="url">全栈成长之Module</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-25 13:29:12" itemprop="dateCreated datePublished" datetime="2019-05-25T13:29:12+00:00">2019-05-25</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+              </span>
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><p>模块化是指把一个复杂的系统分解到多个模块以方便编码。</p>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>开发网页要通过命名空间的方式来组织代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&apos;jquery.js&apos;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>命名空间冲刺，两个库可能会使用同一个名称  </li>
+<li>无法合理地管理项目依赖和版本  </li>
+<li>无法方便地控制依赖的加载顺序  </li>
+</ul>
+<h2 id="CommonJs"><a href="#CommonJs" class="headerlink" title="CommonJs"></a>CommonJs</h2><p><code>CommonJs</code>是一种使用广泛的<code>JavaScript</code>模块化规范，核心思想是通过<code>require</code>方式来同步地加载依赖的其他模块，通过<code></code>module.exports`导出需要暴露的接口。  </p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>采用<code>CommonJs</code>导入以及导出的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 导入</span><br><span class="line">const antFun  = require(&apos;./moduleA_antFun&apos;);</span><br><span class="line">antFun();</span><br><span class="line">// 导出</span><br><span class="line">module.exports = antFun;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">### 原理</span><br><span class="line"> A.js</span><br></pre></td></tr></table></figure></p>
+<p>let fs = require(‘fs);<br>let path = require(‘path’);<br>let b = req(‘./b.js’);<br>function req(mod){<br>    let fileName = path.join(<strong>dirname,mod);<br>    let content = fs.readFileSync(fileName,’utf8’);<br>    let fn = new Function(‘exports’, ‘require’, ‘module’, ‘</strong>filename’, ‘<strong>dirname’, content + ‘\n return module.exports;’);<br>    let module = {<br>        exports: {}<br>    };<br>    return fn(module.exports,req,module,</strong>fileName,__dirname)<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B.js</span><br></pre></td></tr></table></figure>
+<p>console.log(‘I am B’);<br>exports.name = ‘zfpx’;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## AMD</span><br><span class="line">AMD 也是一种 `JavaScript`模块化的规范，与 `CommonJS`最大的不同在于他采用异步的方式去加载依赖模块。 `AMD` 规范主要是为了解决针对浏览器环境的模块化问题，最具代表性的实现是`requirejs`。</span><br><span class="line"></span><br><span class="line">AMD的优点  </span><br><span class="line">- 可在不转换代码的情况下直接在浏览器中运行</span><br><span class="line">- 可加载多个依赖</span><br><span class="line">- 代码可运行在浏览器环境和`Node`环境下  </span><br><span class="line"></span><br><span class="line">AMD的缺点  </span><br><span class="line">- `JavaScript`运行环境没有原生支持AMD，需要先导入了AMD的库后才能正常使用。  </span><br><span class="line"></span><br><span class="line">### 用法</span><br></pre></td></tr></table></figure></p>
+<p>// 定义一个模块<br>define(‘a’,[],function(){<br>    return ‘a’<br>})<br>define(‘b’,[‘a’],function(a){<br>    return a + ‘b’<br>})</p>
+<p>// 导入和使用<br>require([‘b’],function(b){<br>    console.log(b)<br>})<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 原理</span><br></pre></td></tr></table></figure></p>
+<p>let factorise = {};<br>funtion define(modName, dependencies,factory){<br>    factory.dependencies = dependencies;<br>    factorise[modName] = factory<br>}<br>function require(modNames,callBack){<br>    let loadeModNames = modNames.map(function(modName){<br>        let factory  = factorise[modName];<br>        let dependencies = factory.dependencies;<br>        let exports;<br>        require(dependencies,function(…mods){<br>            exports = factory.apply(null,mods);<br>        });<br>        return exports<br>    })<br>    callBack.apply(null,loadeModNames)<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## ES6模块化</span><br><span class="line">ES6模块化是ECMA提出的`JavaScript`模块化规范。他在语言层面上实现了模块化。浏览器厂商和`Node.js` 都宣布要原生支持该规范。它将逐步取代`CommonJs`和AMD规范，成为浏览器和服务器统一的模块解决方案。采用ES6模块化导入以及导出的代码如下</span><br></pre></td></tr></table></figure></p>
+<p>// 导入<br>import {name} from ‘./person.js’;<br>// 导出<br>export const name = ‘zfpx’;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ES6 模块虽然是终极模块化方案，但他的缺点在于目前还无法直接运行在大部分`JavaScript`运行环境下，必须通过工具转换成标准ES5后才能正常运行。</span><br><span class="line"></span><br><span class="line"># 自动化构建</span><br><span class="line">构建就是把源代码转换成发布到线上的可执行`JavaScript`、`CSS`、`HTML`代码，包括以下内容。   </span><br><span class="line">- 代码转换： ECMAscript6 编程成浏览器识别的 ECMAscript5、LESS编译成CSS等。</span><br><span class="line">- 文件优化： 压缩`JavaScript`、`CSS`、`HTML`代码，压缩合并图片等。</span><br><span class="line">- 代码分割： 提取多个页面的公共代码，提取首屏不需要执行部分的代码让其异步加载</span><br><span class="line">- 模块合并： 在采用模块化的项目里会有多个模块和文件，需要构建功能吧模块分类合并成一个文件。</span><br><span class="line">- 自动刷新： 监听本地源代码的变化，自动重新构建，刷新浏览器。</span><br><span class="line">- 代码校验： 在代码被提交到仓库前需要校验代码是否符合规范，以及单元测试是否通过。</span><br><span class="line">- 自动发布： 更新完代码后，自动构建出线上可发布代码并推送至发布系统。</span><br></pre></td></tr></table></figure></p>
+<p>#! /usr/bin/env node<br>const Path = require(‘path’);<br>const fs = require(‘fs’);<br>let ejs = require(‘ejs’);<br>let cwd = process.cwd();<br>let { entry,output:{filname,path}} = reuqire(Path.join(cwd,’./webpack.config.js’));<br>let script  = fs.readFileSync(entry,’utf8’);<br>script.replace(/require{<a href=".+?">“‘</a>[‘“]}/g,function(){<br>    let name  = arguments[1];<br>    let script = fs.readFileSync(name,’utf8’);<br>    modules.push({name,script});<br>})<br>let bundle = <code>(function (modules) {
+    function require(moduleId) {
+        var module = {
+            exports: {}
+        };
+        modules[moduleId].call(module.exports, module, module.exports, require);
+        return module.exports;
+    }
+    return require(&quot;&lt;%-entry%&gt;&quot;);
+})</code><br>let bundleJs = ejs.render(bundle,{<br>    entry,script,modules<br>})</p>
+<p>try{<br>    fs.writeFileSync(Path.join(path,filename),bundlejs);<br>}catch(e){<br>     console.error(‘编译失败 ‘, e);<br>}<br>console.log(‘compile sucessfully!’);<br><code>`</code></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/stacker/command/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -334,7 +520,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:59:52" itemprop="dateModified" datetime="2019-07-12T08:59:52+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
               </span>
             
           
@@ -497,7 +683,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:59:52" itemprop="dateModified" datetime="2019-07-12T08:59:52+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
               </span>
             
           
@@ -699,7 +885,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:59:52" itemprop="dateModified" datetime="2019-07-12T08:59:52+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
               </span>
             
           
@@ -901,7 +1087,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:59:52" itemprop="dateModified" datetime="2019-07-12T08:59:52+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
               </span>
             
           
@@ -1128,7 +1314,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:59:52" itemprop="dateModified" datetime="2019-07-12T08:59:52+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
               </span>
             
           
@@ -1288,7 +1474,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:59:52" itemprop="dateModified" datetime="2019-07-12T08:59:52+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
               </span>
             
           
@@ -1623,7 +1809,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

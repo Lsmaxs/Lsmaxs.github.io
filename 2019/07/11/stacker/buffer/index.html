@@ -94,11 +94,11 @@
 <meta name="keywords" content="stack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="全栈成长之buffer">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/stacker/buffer/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/11/stacker/buffer/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="什么是Buffer 缓冲区Buffer是暂时存放输入输出数据的一段内存。 JS语言没有二进制数据类型，而在处理TCP和文件流的时候，必须要处理二进制数据。 NodeJS提供了一个Buffer对象来提供对二进制数据的操作。 是一个表示固定内存分配的全集对象，也就是说要放到缓存区中的字节数需要提前确定。 Buffer好比由一个8位字节元素组成的数组，可以有效的在JavaScript中表示二进制数据">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-07-12T08:59:52.724Z">
+<meta property="og:updated_time" content="2019-07-12T09:20:19.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之buffer">
 <meta name="twitter:description" content="什么是Buffer 缓冲区Buffer是暂时存放输入输出数据的一段内存。 JS语言没有二进制数据类型，而在处理TCP和文件流的时候，必须要处理二进制数据。 NodeJS提供了一个Buffer对象来提供对二进制数据的操作。 是一个表示固定内存分配的全集对象，也就是说要放到缓存区中的字节数需要提前确定。 Buffer好比由一个8位字节元素组成的数组，可以有效的在JavaScript中表示二进制数据">
@@ -109,7 +109,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/12/stacker/buffer/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/11/stacker/buffer/">
 
 
 
@@ -278,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/stacker/buffer/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/stacker/buffer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lsmaxs">
@@ -321,13 +321,23 @@
                 
               
 
-              <time title="Created: 2019-07-12 16:20:12 / Modified: 08:59:52" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
+              <time title="Created: 2019-07-11 10:20:12" itemprop="dateCreated datePublished" datetime="2019-07-11T10:20:12+00:00">2019-07-11</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+              </span>
             
           
 
@@ -366,11 +376,11 @@
 
       
         <h1 id="什么是Buffer"><a href="#什么是Buffer" class="headerlink" title="什么是Buffer"></a>什么是Buffer</h1><ul>
-<li>缓冲区Buffer是暂时存放输入输出数据的一段内存。</li>
+<li>缓冲区<code>Buffer</code>是暂时存放输入输出数据的一段内存。</li>
 <li>JS语言没有二进制数据类型，而在处理TCP和文件流的时候，必须要处理二进制数据。</li>
-<li>NodeJS提供了一个Buffer对象来提供对二进制数据的操作。</li>
+<li><code>NodeJS</code>提供了一个<code>Buffer</code>对象来提供对二进制数据的操作。</li>
 <li>是一个表示固定内存分配的全集对象，也就是说要放到缓存区中的字节数需要提前确定。</li>
-<li>Buffer好比由一个8位字节元素组成的数组，可以有效的在JavaScript中表示二进制数据</li>
+<li><code>Buffer</code>好比由一个8位字节元素组成的数组，可以有效的在<code>JavaScript</code>中表示二进制数据</li>
 </ul>
 <h1 id="什么是字节"><a href="#什么是字节" class="headerlink" title="什么是字节"></a>什么是字节</h1><ul>
 <li>字节(Byte)是计算机存储时的一种计量单位，一个字节等于8位二进制数</li>
@@ -394,8 +404,8 @@
 <h1 id="buffer的常用方法"><a href="#buffer的常用方法" class="headerlink" title="buffer的常用方法"></a>buffer的常用方法</h1><h2 id="fill"><a href="#fill" class="headerlink" title="fill"></a>fill</h2><p><code>buf.fill(value[,offset[,end]][,encoding])</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buffer.fill(0);</span><br></pre></td></tr></table></figure></p>
 <h2 id="write方法"><a href="#write方法" class="headerlink" title="write方法"></a>write方法</h2><p><code>buf.write(string[, offset[, length]][, encoding])</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let buffer = Buffer.allocUnsafe(6);</span><br><span class="line">buffer.writer(&apos;Sean&apos;,0.3,&apos;utf8&apos;)</span><br><span class="line">buffer.writer(&apos;Blog&apos;,4.3,&apos;utf8&apos;)</span><br></pre></td></tr></table></figure></p>
 <h2 id="writeInt8"><a href="#writeInt8" class="headerlink" title="writeInt8"></a>writeInt8</h2><ul>
-<li>通过指定的<code>offset</code>将<code>value</code>写入到当前Buffer</li>
-<li>这个value应当是一个有效的有符号的8位整数<br><code>buf.writeInt8(value, offset[, noAssert])</code></li>
+<li>通过指定的<code>offset</code>将<code>value</code>写入到当前<code>Buffer</code></li>
+<li>这个<code>value</code>应当是一个有效的有符号的8位整数<br><code>buf.writeInt8(value, offset[, noAssert])</code></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let buf = Buffer.alloc(4);</span><br><span class="line">buf.writeInt8()</span><br><span class="line">buf.writeInt8(0,0);</span><br><span class="line">buf.writeInt8(16,1);</span><br><span class="line">buf.writeInt8(32,2);</span><br><span class="line">buf.writeInt8(48,3);</span><br><span class="line">console.log(buf);// &lt;Buffer 00 10 20 30&gt;</span><br><span class="line">console.log(buf.readInt8(0));//0</span><br><span class="line">console.log(buf.readInt8(1));//16</span><br><span class="line">console.log(buf.readInt8(2));//32</span><br><span class="line">console.log(buf.readInt8(3));//48</span><br></pre></td></tr></table></figure>
 <h2 id="Little-Endian-amp-Big-Endian"><a href="#Little-Endian-amp-Big-Endian" class="headerlink" title="Little-Endian &amp; Big-Endian"></a>Little-Endian &amp; Big-Endian</h2><p>不同的CPU有不同的字节序类型，这些字节序是指整数在内存中报错的顺序。</p>
@@ -461,8 +471,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/12/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/06/20/stacker/nodeCore/" rel="next" title="全栈成长之core">
+                <i class="fa fa-chevron-left"></i> 全栈成长之core
               </a>
             
           </div>
@@ -470,6 +480,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/12/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -538,7 +552,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
