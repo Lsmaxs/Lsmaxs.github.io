@@ -319,7 +319,7 @@
                 
               
 
-              <time title="Created: 2019-07-12 16:20:12 / Modified: 08:28:42" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
+              <time title="Created: 2019-07-12 16:20:12 / Modified: 08:41:07" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
             </span>
           
 
@@ -386,6 +386,23 @@
 <h2 id="转为十进制"><a href="#转为十进制" class="headerlink" title="转为十进制"></a>转为十进制</h2><p>将任意进制字符串转换为十进制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;11&apos;, 2) // 3</span><br><span class="line">parseInt(&apos;77&apos;, 8) // 63</span><br><span class="line">parseInt(&apos;E1&apos;, 16) //231</span><br></pre></td></tr></table></figure></p>
 <h2 id="将十进制转换为其他进制字符串"><a href="#将十进制转换为其他进制字符串" class="headerlink" title="将十进制转换为其他进制字符串"></a>将十进制转换为其他进制字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(3).toString(2)</span><br><span class="line">(63).toString(8)</span><br><span class="line">(231).toString(16)</span><br></pre></td></tr></table></figure>
 <h1 id="定义buffer的三种方式"><a href="#定义buffer的三种方式" class="headerlink" title="定义buffer的三种方式"></a>定义buffer的三种方式</h1><h2 id="通过长度定义buffer"><a href="#通过长度定义buffer" class="headerlink" title="通过长度定义buffer"></a>通过长度定义buffer</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个长度为 10 、 且用0 填充的buffer</span><br><span class="line">const buf1 = Buffer.alloc(10);</span><br><span class="line">// 创建一个长度为 10 、 且用0 填充的buffer</span><br><span class="line">const buf1 = Buffer.alloc(10,1);</span><br><span class="line">// 创建一个长度为 10 、 且未初始化的buffer</span><br><span class="line">const buf3 = Buffer.allocUnsafe(10)</span><br></pre></td></tr></table></figure>
+<h2 id="通过数组定义buffer"><a href="#通过数组定义buffer" class="headerlink" title="通过数组定义buffer"></a>通过数组定义buffer</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个包含 [0x1, 0x2, 0x3] 的 Buffer。</span><br><span class="line">const buf4 = Buffer.from([1, 2, 3]);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>正常情况下为0-255之间</p>
+</blockquote>
+<h2 id="字符串创建"><a href="#字符串创建" class="headerlink" title="字符串创建"></a>字符串创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const buf5 = Buffer.from(&apos;Sean 博客&apos;)</span><br></pre></td></tr></table></figure>
+<h1 id="buffer的常用方法"><a href="#buffer的常用方法" class="headerlink" title="buffer的常用方法"></a>buffer的常用方法</h1><h2 id="fill"><a href="#fill" class="headerlink" title="fill"></a>fill</h2><p><code>buf.fill(value[,offset[,end]][,encoding])</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buffer.fill(0);</span><br></pre></td></tr></table></figure></p>
+<h2 id="write方法"><a href="#write方法" class="headerlink" title="write方法"></a>write方法</h2><p><code>buf.write(string[, offset[, length]][, encoding])</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let buffer = Buffer.allocUnsafe(6);</span><br><span class="line">buffer.writer(&apos;Sean&apos;,0.3,&apos;utf8&apos;)</span><br><span class="line">buffer.writer(&apos;Blog&apos;,4.3,&apos;utf8&apos;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="writeInt8"><a href="#writeInt8" class="headerlink" title="writeInt8"></a>writeInt8</h2><ul>
+<li>通过指定的<code>offset</code>将<code>value</code>写入到当前Buffer</li>
+<li>这个value应当是一个有效的有符号的8位整数<br><code>buf.writeInt8(value, offset[, noAssert])</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let buf = Buffer.alloc(4);</span><br><span class="line">buf.writeInt8()</span><br><span class="line">buf.writeInt8(0,0);</span><br><span class="line">buf.writeInt8(16,1);</span><br><span class="line">buf.writeInt8(32,2);</span><br><span class="line">buf.writeInt8(48,3);</span><br><span class="line">console.log(buf);// &lt;Buffer 00 10 20 30&gt;</span><br><span class="line">console.log(buf.readInt8(0));//0</span><br><span class="line">console.log(buf.readInt8(1));//16</span><br><span class="line">console.log(buf.readInt8(2));//32</span><br><span class="line">console.log(buf.readInt8(3));//48</span><br></pre></td></tr></table></figure>
+<h2 id="Little-Endian-amp-Big-Endian"><a href="#Little-Endian-amp-Big-Endian" class="headerlink" title="Little-Endian &amp; Big-Endian"></a>Little-Endian &amp; Big-Endian</h2><p>不同的CPU有不同的字节序类型，这些字节序是指整数在内存中报错的顺序。</p>
+<ul>
+<li>Big-endian: 将高序字节存储在起始地址(高位编址)</li>
+<li>Little-Endian: 将低序字节存储在起始地址(低位编址)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let buffer = Buffer.alloc(4);</span><br><span class="line">buffer.writeInt16BE(2**8,0)</span><br><span class="line">buffer.writeInt16LE(2**8,0)</span><br></pre></td></tr></table></figure></li>
+</ul>
 
           
         
@@ -489,7 +506,7 @@
                 
               
 
-              <time title="Created: 2019-07-12 08:28:42" itemprop="dateCreated datePublished" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
+              <time title="Created: 2019-07-12 08:41:07" itemprop="dateCreated datePublished" datetime="2019-07-12T08:41:07+00:00">2019-07-12</time>
             </span>
           
 
@@ -658,7 +675,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 08:41:07" itemprop="dateModified" datetime="2019-07-12T08:41:07+00:00">2019-07-12</time>
               </span>
             
           
@@ -948,7 +965,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 08:41:07" itemprop="dateModified" datetime="2019-07-12T08:41:07+00:00">2019-07-12</time>
               </span>
             
           
@@ -1126,7 +1143,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 08:41:07" itemprop="dateModified" datetime="2019-07-12T08:41:07+00:00">2019-07-12</time>
               </span>
             
           
@@ -1310,7 +1327,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 08:41:07" itemprop="dateModified" datetime="2019-07-12T08:41:07+00:00">2019-07-12</time>
               </span>
             
           
@@ -1535,7 +1552,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 08:41:07" itemprop="dateModified" datetime="2019-07-12T08:41:07+00:00">2019-07-12</time>
               </span>
             
           
@@ -1770,7 +1787,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 08:41:07" itemprop="dateModified" datetime="2019-07-12T08:41:07+00:00">2019-07-12</time>
               </span>
             
           
@@ -1931,7 +1948,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 08:41:07" itemprop="dateModified" datetime="2019-07-12T08:41:07+00:00">2019-07-12</time>
               </span>
             
           
@@ -2306,7 +2323,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 08:41:07" itemprop="dateModified" datetime="2019-07-12T08:41:07+00:00">2019-07-12</time>
               </span>
             
           
