@@ -70,7 +70,7 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     back2top: true,
     back2top_sidebar: false,
     fancybox: false,
@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/stacker/buffer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lsmaxs">
@@ -294,7 +294,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/11/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+                <a href="/2019/07/12/stacker/buffer/" class="post-title-link" itemprop="url">全栈成长之buffer</a>
               
             
           </h1>
@@ -319,7 +319,177 @@
                 
               
 
-              <time title="Created: 2019-07-11 09:59:05" itemprop="dateCreated datePublished" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
+              <time title="Created: 2019-07-12 16:20:12 / Modified: 08:28:42" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="什么是Buffer"><a href="#什么是Buffer" class="headerlink" title="什么是Buffer"></a>什么是Buffer</h1><ul>
+<li>缓冲区Buffer是暂时存放输入输出数据的一段内存。</li>
+<li>JS语言没有二进制数据类型，而在处理TCP和文件流的时候，必须要处理二进制数据。</li>
+<li>NodeJS提供了一个Buffer对象来提供对二进制数据的操作。</li>
+<li>是一个表示固定内存分配的全集对象，也就是说要放到缓存区中的字节数需要提前确定。</li>
+<li>Buffer好比由一个8位字节元素组成的数组，可以有效的在JavaScript中表示二进制数据</li>
+</ul>
+<h1 id="什么是字节"><a href="#什么是字节" class="headerlink" title="什么是字节"></a>什么是字节</h1><ul>
+<li>字节(Byte)是计算机存储时的一种计量单位，一个字节等于8位二进制数</li>
+<li>一个位代表一个0或1，每8个位组成一个字节</li>
+<li>字节是通过网络传输信息的基本单位</li>
+<li>一个字节最大值十进制是255(2**8-1)</li>
+</ul>
+<h1 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h1><ul>
+<li>0b 2进制</li>
+<li>0x 16进制</li>
+<li>0o 8进制</li>
+</ul>
+<h2 id="转为十进制"><a href="#转为十进制" class="headerlink" title="转为十进制"></a>转为十进制</h2><p>将任意进制字符串转换为十进制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;11&apos;, 2) // 3</span><br><span class="line">parseInt(&apos;77&apos;, 8) // 63</span><br><span class="line">parseInt(&apos;E1&apos;, 16) //231</span><br></pre></td></tr></table></figure></p>
+<h2 id="将十进制转换为其他进制字符串"><a href="#将十进制转换为其他进制字符串" class="headerlink" title="将十进制转换为其他进制字符串"></a>将十进制转换为其他进制字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(3).toString(2)</span><br><span class="line">(63).toString(8)</span><br><span class="line">(231).toString(16)</span><br></pre></td></tr></table></figure>
+<h1 id="定义buffer的三种方式"><a href="#定义buffer的三种方式" class="headerlink" title="定义buffer的三种方式"></a>定义buffer的三种方式</h1><h2 id="通过长度定义buffer"><a href="#通过长度定义buffer" class="headerlink" title="通过长度定义buffer"></a>通过长度定义buffer</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个长度为 10 、 且用0 填充的buffer</span><br><span class="line">const buf1 = Buffer.alloc(10);</span><br><span class="line">// 创建一个长度为 10 、 且用0 填充的buffer</span><br><span class="line">const buf1 = Buffer.alloc(10,1);</span><br><span class="line">// 创建一个长度为 10 、 且未初始化的buffer</span><br><span class="line">const buf3 = Buffer.allocUnsafe(10)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lsmaxs">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/12/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-12 08:28:42" itemprop="dateCreated datePublished" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
             </span>
           
 
@@ -488,7 +658,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
+                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
               </span>
             
           
@@ -778,7 +948,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
+                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
               </span>
             
           
@@ -956,7 +1126,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
+                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
               </span>
             
           
@@ -1140,7 +1310,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
+                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
               </span>
             
           
@@ -1365,7 +1535,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
+                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
               </span>
             
           
@@ -1600,7 +1770,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
+                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
               </span>
             
           
@@ -1761,7 +1931,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
+                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
               </span>
             
           
@@ -2136,7 +2306,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
+                <time title="Modified: 2019-07-12 08:28:42" itemprop="dateModified" datetime="2019-07-12T08:28:42+00:00">2019-07-12</time>
               </span>
             
           
@@ -2247,169 +2417,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/stacker/command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lsmaxs">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/22/stacker/command/" class="post-title-link" itemprop="url">全栈成长之Command</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-22 16:20:12" itemprop="dateCreated datePublished" datetime="2019-05-22T16:20:12+00:00">2019-05-22</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-11 09:59:05" itemprop="dateModified" datetime="2019-07-11T09:59:05+00:00">2019-07-11</time>
-              </span>
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h1><h2 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h2><h3 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:prot</span><br><span class="line"></span><br><span class="line">lsof -i:8080</span><br></pre></td></tr></table></figure>
-<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -antp | grep port</span><br><span class="line"></span><br><span class="line">netstat -antp | grep 8080</span><br></pre></td></tr></table></figure>
-<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h3><p>查看进程占用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsof -i tcp:8080</span><br><span class="line">```  </span><br><span class="line">该命令会显示占用8080端口的进程，有其PID，可以通过PID关掉该进程</span><br></pre></td></tr></table></figure></p>
-<p>kill PID<br><code>`</code>  </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2456,7 +2463,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2525,7 +2532,7 @@
 
     </div>
   </aside>
-  
+  <div id="sidebar-dimmer"></div>
 
 
         
