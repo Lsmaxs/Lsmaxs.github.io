@@ -1,15 +1,15 @@
 ---
 title: 全栈成长之buffer
-date: 2019-07-12 16:20:12
+date: 2019-07-11 10:20:12
 tags: stack
 ---
 
 # 什么是Buffer
-- 缓冲区Buffer是暂时存放输入输出数据的一段内存。
+- 缓冲区`Buffer`是暂时存放输入输出数据的一段内存。
 - JS语言没有二进制数据类型，而在处理TCP和文件流的时候，必须要处理二进制数据。
-- NodeJS提供了一个Buffer对象来提供对二进制数据的操作。
+- `NodeJS`提供了一个`Buffer`对象来提供对二进制数据的操作。
 - 是一个表示固定内存分配的全集对象，也就是说要放到缓存区中的字节数需要提前确定。
-- Buffer好比由一个8位字节元素组成的数组，可以有效的在JavaScript中表示二进制数据
+- `Buffer`好比由一个8位字节元素组成的数组，可以有效的在`JavaScript`中表示二进制数据
 
 # 什么是字节
 - 字节(Byte)是计算机存储时的一种计量单位，一个字节等于8位二进制数
@@ -77,8 +77,8 @@ buffer.writer('Blog',4.3,'utf8')
 ```
 
 ## writeInt8 
-- 通过指定的`offset`将`value`写入到当前Buffer
-- 这个value应当是一个有效的有符号的8位整数
+- 通过指定的`offset`将`value`写入到当前`Buffer`
+- 这个`value`应当是一个有效的有符号的8位整数
 `buf.writeInt8(value, offset[, noAssert])`
 
 ```
