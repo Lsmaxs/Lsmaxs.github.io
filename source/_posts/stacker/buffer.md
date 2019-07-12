@@ -105,3 +105,81 @@ buffer.writeInt16BE(2**8,0)
 buffer.writeInt16LE(2**8,0)
 
 ```
+
+## toString 方法
+```
+let buffer = Buffer.from('Sean Blog');
+console.log(buffer.toString('utf8',3,6))
+```
+
+## slice 方法
+```
+let buffer = Buffer.from('Sean Blog');
+console.log(buffer.slice(2,6))
+```
+
+## 截取乱码问题
+```
+let {StringDecoder} = require('string_decoder);
+let sd = new StringDecoder();
+let buffer = Buffer.from('Sean');
+console.log(sd.write(buffer.slice(0,4)))
+console.log(sd.write(buffer.slice(4)))
+```
+
+## copy 方法
+- 复制Buffer吧多个buffer拷贝到一个大buffer上
+```
+Buffer.prototype.copy = function(targetBuffer,targetStart,sourceStart,sourceEnd){
+    for(let i=sourceStart;i<sourceEnd;i++){
+        targetBuffer[targetStart++] = this[i];
+    }
+}
+let buffer = Buffer.from('Sean Blog');
+let subBuffer = Buffer.alloc(6);
+buffer.copy(subBuffer,0,0,4);
+buffer.copy(subBuffer,3,3,6);
+
+```
+
+## concat方法
+```
+Buffer.concat = function(list){
+    let totalLength = list.reduce((len,item)=> len+item.length,0)
+    if(list.length==0){
+        return list[0]
+    }
+    let newBuffer = Buffer.alloc(totalLength);
+    let pos = 0;
+    for(let buffer of list){
+        for(let byte of buffer){
+            newBuffer[pos++] = byte;
+        }
+    }
+    return newBuffer;
+}
+
+```
+## isBuffer
+判断是否Buffer
+```
+Buffer.isBuffer();
+```
+
+# Base64
+- Base64是网络上最常见的用于传输8bit字节码的编码方式之一
+- Base64就是一种基于64个可打印字符来表示二进制数据的方法
+- Base64要求把每三个8bit的字节转换为四个6bit的字节（38 = 46 = 24），然后吧6bit再添两位高位0，组成四个8bit的字节
+```
+const CHARTS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+function transfer(str){
+    let buf = Buffer.from(str);
+    let result = '';
+    for(let b of buf){
+        result += b.toString(2)
+    }
+    return result.match(/(\d{6})/g).map(val=> parseInt(val,2)).map(val=>CHARTS[value]).join('')
+}
+let r = transfer('博客');
+console.log(r)
+```
