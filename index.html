@@ -319,7 +319,7 @@
                 
               
 
-              <time title="Created: 2019-07-12 16:20:12 / Modified: 09:20:19" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
+              <time title="Created: 2019-07-12 16:20:12 / Modified: 10:09:10" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
             </span>
           
 
@@ -370,6 +370,30 @@
 <li>在fs模块中，所有的方法都分为同步和异步两部实现</li>
 <li>具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法</li>
 </ul>
+<h1 id="整体读取文件"><a href="#整体读取文件" class="headerlink" title="整体读取文件"></a>整体读取文件</h1><h2 id="异步读取"><a href="#异步读取" class="headerlink" title="异步读取"></a>异步读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(path[,options],callback)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>options<ul>
+<li>encodeing</li>
+<li>flag flag 默认 = ‘r’</li>
+</ul>
+</li>
+</ul>
+<h2 id="同步读取"><a href="#同步读取" class="headerlink" title="同步读取"></a>同步读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.readFileSync(path[,options])</span><br></pre></td></tr></table></figure>
+<h1 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h1><h2 id="异步写入"><a href="#异步写入" class="headerlink" title="异步写入"></a>异步写入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writeFile(file,data[,options],callback)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>options<ul>
+<li>encoding</li>
+<li>flag flag默认 = ‘w’</li>
+<li>mode 读写权限，默认为0666</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let fs = require(&apos;fs&apos;);</span><br><span class="line">fs.writeFile(&apos;./1.txt&apos;,Data.now()+&apos;\n&apos;,&#123;flag:&apos;a&apos;&#125;,function()&#123;</span><br><span class="line">    console.log(&apos;OK&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="同步写入"><a href="#同步写入" class="headerlink" title="同步写入"></a>同步写入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writefileSync(file,data[,options])</span><br></pre></td></tr></table></figure>
+<h3 id="追加文件"><a href="#追加文件" class="headerlink" title="追加文件"></a>追加文件</h3><blockquote>
+<p>fs.appendFile(file,data[,options],callback)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.appendFile(&apos;./1.txt&apos;,Date.now()+&apos;\n&apos;,function()&#123;</span><br><span class="line">    console.log(&apos;ok&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="拷贝文件"><a href="#拷贝文件" class="headerlink" title="拷贝文件"></a>拷贝文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function copy()&#123;</span><br><span class="line">    fs.readFile(src,function(err,data)&#123;</span><br><span class="line">        fs.writeFile(target,data)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -473,7 +497,7 @@
                 
               
 
-              <time title="Created: 2019-07-12 09:20:19" itemprop="dateCreated datePublished" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+              <time title="Created: 2019-07-12 10:09:10" itemprop="dateCreated datePublished" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
             </span>
           
 
@@ -642,7 +666,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
               </span>
             
           
@@ -854,7 +878,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
               </span>
             
           
@@ -1144,7 +1168,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
               </span>
             
           
@@ -1322,7 +1346,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
               </span>
             
           
@@ -1506,7 +1530,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
               </span>
             
           
@@ -1731,7 +1755,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
               </span>
             
           
@@ -1966,7 +1990,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
               </span>
             
           
@@ -2127,7 +2151,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 09:20:19" itemprop="dateModified" datetime="2019-07-12T09:20:19+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
               </span>
             
           
@@ -2484,16 +2508,6 @@
                 
                 <div class="site-state-item site-state-categories">
                   
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
                     <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">categories</span>
                   
@@ -2505,15 +2519,7 @@
                 
                 <div class="site-state-item site-state-tags">
                   
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>

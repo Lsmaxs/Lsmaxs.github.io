@@ -90,18 +90,18 @@
 
 
 
-  <meta name="description" content="fs模块 在node.js中，使用fs模块来实现所有有关文件以及目录的创建、写入以及删除操作 在fs模块中，所有的方法都分为同步和异步两部实现 具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法">
+  <meta name="description" content="fs模块 在node.js中，使用fs模块来实现所有有关文件以及目录的创建、写入以及删除操作 在fs模块中，所有的方法都分为同步和异步两部实现 具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法  整体读取文件异步读取1fs.readFile(path[,options],callback)  options encodeing flag flag 默认 = ‘r’    同步读">
 <meta name="keywords" content="stack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="全栈成长之fs">
 <meta property="og:url" content="http://yoursite.com/2019/07/12/stacker/fs/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="fs模块 在node.js中，使用fs模块来实现所有有关文件以及目录的创建、写入以及删除操作 在fs模块中，所有的方法都分为同步和异步两部实现 具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法">
+<meta property="og:description" content="fs模块 在node.js中，使用fs模块来实现所有有关文件以及目录的创建、写入以及删除操作 在fs模块中，所有的方法都分为同步和异步两部实现 具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法  整体读取文件异步读取1fs.readFile(path[,options],callback)  options encodeing flag flag 默认 = ‘r’    同步读">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2019-07-12T09:20:19.216Z">
+<meta property="og:updated_time" content="2019-07-12T10:09:10.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全栈成长之fs">
-<meta name="twitter:description" content="fs模块 在node.js中，使用fs模块来实现所有有关文件以及目录的创建、写入以及删除操作 在fs模块中，所有的方法都分为同步和异步两部实现 具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法">
+<meta name="twitter:description" content="fs模块 在node.js中，使用fs模块来实现所有有关文件以及目录的创建、写入以及删除操作 在fs模块中，所有的方法都分为同步和异步两部实现 具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法  整体读取文件异步读取1fs.readFile(path[,options],callback)  options encodeing flag flag 默认 = ‘r’    同步读">
 
 
 
@@ -321,7 +321,7 @@
                 
               
 
-              <time title="Created: 2019-07-12 16:20:12 / Modified: 09:20:19" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
+              <time title="Created: 2019-07-12 16:20:12 / Modified: 10:09:10" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
             </span>
           
 
@@ -370,6 +370,30 @@
 <li>在fs模块中，所有的方法都分为同步和异步两部实现</li>
 <li>具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法</li>
 </ul>
+<h1 id="整体读取文件"><a href="#整体读取文件" class="headerlink" title="整体读取文件"></a>整体读取文件</h1><h2 id="异步读取"><a href="#异步读取" class="headerlink" title="异步读取"></a>异步读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(path[,options],callback)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>options<ul>
+<li>encodeing</li>
+<li>flag flag 默认 = ‘r’</li>
+</ul>
+</li>
+</ul>
+<h2 id="同步读取"><a href="#同步读取" class="headerlink" title="同步读取"></a>同步读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.readFileSync(path[,options])</span><br></pre></td></tr></table></figure>
+<h1 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h1><h2 id="异步写入"><a href="#异步写入" class="headerlink" title="异步写入"></a>异步写入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writeFile(file,data[,options],callback)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>options<ul>
+<li>encoding</li>
+<li>flag flag默认 = ‘w’</li>
+<li>mode 读写权限，默认为0666</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let fs = require(&apos;fs&apos;);</span><br><span class="line">fs.writeFile(&apos;./1.txt&apos;,Data.now()+&apos;\n&apos;,&#123;flag:&apos;a&apos;&#125;,function()&#123;</span><br><span class="line">    console.log(&apos;OK&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="同步写入"><a href="#同步写入" class="headerlink" title="同步写入"></a>同步写入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writefileSync(file,data[,options])</span><br></pre></td></tr></table></figure>
+<h3 id="追加文件"><a href="#追加文件" class="headerlink" title="追加文件"></a>追加文件</h3><blockquote>
+<p>fs.appendFile(file,data[,options],callback)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.appendFile(&apos;./1.txt&apos;,Date.now()+&apos;\n&apos;,function()&#123;</span><br><span class="line">    console.log(&apos;ok&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="拷贝文件"><a href="#拷贝文件" class="headerlink" title="拷贝文件"></a>拷贝文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function copy()&#123;</span><br><span class="line">    fs.readFile(src,function(err,data)&#123;</span><br><span class="line">        fs.writeFile(target,data)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -501,16 +525,6 @@
                 
                 <div class="site-state-item site-state-categories">
                   
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
                     <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">categories</span>
                   
@@ -522,15 +536,7 @@
                 
                 <div class="site-state-item site-state-tags">
                   
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -564,7 +570,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fs模块"><span class="nav-number">1.</span> <span class="nav-text">fs模块</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fs模块"><span class="nav-number">1.</span> <span class="nav-text">fs模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整体读取文件"><span class="nav-number">2.</span> <span class="nav-text">整体读取文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异步读取"><span class="nav-number">2.1.</span> <span class="nav-text">异步读取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步读取"><span class="nav-number">2.2.</span> <span class="nav-text">同步读取</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写入文件"><span class="nav-number">3.</span> <span class="nav-text">写入文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异步写入"><span class="nav-number">3.1.</span> <span class="nav-text">异步写入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步写入"><span class="nav-number">3.1.1.</span> <span class="nav-text">同步写入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#追加文件"><span class="nav-number">3.1.2.</span> <span class="nav-text">追加文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝文件"><span class="nav-number">3.1.3.</span> <span class="nav-text">拷贝文件</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
