@@ -32,21 +32,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-<link rel="stylesheet" href="/css/main.css?v=7.2.0">
-
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
 
 
@@ -63,6 +48,21 @@
 
 
 
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
 
 <script id="hexo.configurations">
   var NexT = window.NexT || {};
@@ -71,11 +71,12 @@
     scheme: 'Muse',
     version: '7.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: true,
-    back2top_sidebar: false,
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
+    pangu: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -84,11 +85,14 @@
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
     }
   };
 </script>
-
-
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
@@ -114,6 +118,7 @@
   };
 </script>
 
+  
   <title>Hexo</title>
   
 
@@ -259,9 +264,7 @@
             
   <section id="posts" class="posts-expand">
     
-      
-
-  
+        
 
   
   
@@ -274,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/stacker/fs/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/26/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lsmaxs">
@@ -294,7 +297,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/12/stacker/fs/" class="post-title-link" itemprop="url">全栈成长之fs</a>
+                <a href="/2019/07/26/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
               
             
           </h1>
@@ -319,195 +322,12 @@
                 
               
 
-              <time title="Created: 2019-07-12 16:20:12 / Modified: 10:09:10" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
-            </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="fs模块"><a href="#fs模块" class="headerlink" title="fs模块"></a>fs模块</h1><ul>
-<li>在node.js中，使用fs模块来实现所有有关文件以及目录的创建、写入以及删除操作</li>
-<li>在fs模块中，所有的方法都分为同步和异步两部实现</li>
-<li>具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法</li>
-</ul>
-<h1 id="整体读取文件"><a href="#整体读取文件" class="headerlink" title="整体读取文件"></a>整体读取文件</h1><h2 id="异步读取"><a href="#异步读取" class="headerlink" title="异步读取"></a>异步读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(path[,options],callback)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>options<ul>
-<li>encodeing</li>
-<li>flag flag 默认 = ‘r’</li>
-</ul>
-</li>
-</ul>
-<h2 id="同步读取"><a href="#同步读取" class="headerlink" title="同步读取"></a>同步读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.readFileSync(path[,options])</span><br></pre></td></tr></table></figure>
-<h1 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h1><h2 id="异步写入"><a href="#异步写入" class="headerlink" title="异步写入"></a>异步写入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writeFile(file,data[,options],callback)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>options<ul>
-<li>encoding</li>
-<li>flag flag默认 = ‘w’</li>
-<li>mode 读写权限，默认为0666</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let fs = require(&apos;fs&apos;);</span><br><span class="line">fs.writeFile(&apos;./1.txt&apos;,Data.now()+&apos;\n&apos;,&#123;flag:&apos;a&apos;&#125;,function()&#123;</span><br><span class="line">    console.log(&apos;OK&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="同步写入"><a href="#同步写入" class="headerlink" title="同步写入"></a>同步写入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writefileSync(file,data[,options])</span><br></pre></td></tr></table></figure>
-<h3 id="追加文件"><a href="#追加文件" class="headerlink" title="追加文件"></a>追加文件</h3><blockquote>
-<p>fs.appendFile(file,data[,options],callback)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.appendFile(&apos;./1.txt&apos;,Date.now()+&apos;\n&apos;,function()&#123;</span><br><span class="line">    console.log(&apos;ok&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="拷贝文件"><a href="#拷贝文件" class="headerlink" title="拷贝文件"></a>拷贝文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function copy()&#123;</span><br><span class="line">    fs.readFile(src,function(err,data)&#123;</span><br><span class="line">        fs.writeFile(target,data)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lsmaxs">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/12/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-12 10:09:10" itemprop="dateCreated datePublished" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
+              <time title="Created: 2019-07-26 08:41:25" itemprop="dateCreated datePublished" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
             </span>
           
 
           
 
-          
-
-          
-            
-            
           
 
           
@@ -589,11 +409,202 @@
   
   </article>
 
+    
+        
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/stacker/fs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lsmaxs">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/12/stacker/fs/" class="post-title-link" itemprop="url">全栈成长之fs</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-12 16:20:12" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:12+00:00">2019-07-12</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-26 08:41:25" itemprop="dateModified" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="fs模块"><a href="#fs模块" class="headerlink" title="fs模块"></a>fs模块</h1><ul>
+<li>在node.js中，使用fs模块来实现所有有关文件以及目录的创建、写入以及删除操作</li>
+<li>在fs模块中，所有的方法都分为同步和异步两部实现</li>
+<li>具有sync后缀的方法为同步方法，不具有sync后缀的方法为异步方法</li>
+</ul>
+<h1 id="整体读取文件"><a href="#整体读取文件" class="headerlink" title="整体读取文件"></a>整体读取文件</h1><h2 id="异步读取"><a href="#异步读取" class="headerlink" title="异步读取"></a>异步读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(path[,options],callback)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>options<ul>
+<li>encodeing</li>
+<li>flag flag 默认 = ‘r’</li>
+</ul>
+</li>
+</ul>
+<h2 id="同步读取"><a href="#同步读取" class="headerlink" title="同步读取"></a>同步读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.readFileSync(path[,options])</span><br></pre></td></tr></table></figure>
+<h1 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h1><h2 id="异步写入"><a href="#异步写入" class="headerlink" title="异步写入"></a>异步写入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writeFile(file,data[,options],callback)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>options<ul>
+<li>encoding</li>
+<li>flag flag默认 = ‘w’</li>
+<li>mode 读写权限，默认为0666</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let fs = require(&apos;fs&apos;);</span><br><span class="line">fs.writeFile(&apos;./1.txt&apos;,Data.now()+&apos;\n&apos;,&#123;flag:&apos;a&apos;&#125;,function()&#123;</span><br><span class="line">    console.log(&apos;OK&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="同步写入"><a href="#同步写入" class="headerlink" title="同步写入"></a>同步写入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writefileSync(file,data[,options])</span><br></pre></td></tr></table></figure>
+<h3 id="追加文件"><a href="#追加文件" class="headerlink" title="追加文件"></a>追加文件</h3><blockquote>
+<p>fs.appendFile(file,data[,options],callback)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.appendFile(&apos;./1.txt&apos;,Date.now()+&apos;\n&apos;,function()&#123;</span><br><span class="line">    console.log(&apos;ok&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="拷贝文件"><a href="#拷贝文件" class="headerlink" title="拷贝文件"></a>拷贝文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function copy()&#123;</span><br><span class="line">    fs.readFile(src,function(err,data)&#123;</span><br><span class="line">        fs.writeFile(target,data)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="从指定位置处开始读取文件"><a href="#从指定位置处开始读取文件" class="headerlink" title="从指定位置处开始读取文件"></a>从指定位置处开始读取文件</h2><h3 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h3><blockquote>
+<p>fs.open(filename,flags,[mode],callback);</p>
+<ul>
+<li>FileDescriptor 是文件描述符</li>
+<li>FileDescriptor 可以被用来表示文件</li>
+<li>in – 标准输入(键盘)的描述符</li>
+<li>out – 标准输出(屏幕)的描述符</li>
+<li>err – 标准错误输出(屏幕)的描述符  </li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.open(&apos;./1,txt&apos;,&apos;r&apos;,0600,function(err,fd)&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><blockquote>
+<p>fs.read(fd,buffer,offset,length,postion.callback((err,bytesRead,buffer)))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">fs.open(path.join(__dirname,&apos;1.txt&apos;),&apos;r&apos;,0o666,function(err,fd)&#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">    let buf = Buffer.alloc(6);</span><br><span class="line">    fs.read(fd,buf,0,6,3,function(err,bytesRead,buffer)&#123;</span><br><span class="line">        console.log(bytesRead);</span><br><span class="line">       console.log(buffer===buf);</span><br><span class="line">       console.log(buf.toString());</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
 
     
       
+    
+    
 
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
+  
+  
+  </article>
+
+    
+        
 
   
   
@@ -666,16 +677,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-26 08:41:25" itemprop="dateModified" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
               </span>
             
           
 
-          
-
-          
-            
-            
           
 
           
@@ -801,11 +807,8 @@
   
   </article>
 
-
     
-      
-
-  
+        
 
   
   
@@ -878,16 +881,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-26 08:41:25" itemprop="dateModified" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
               </span>
             
           
 
-          
-
-          
-            
-            
           
 
           
@@ -1091,11 +1089,8 @@
   
   </article>
 
-
     
-      
-
-  
+        
 
   
   
@@ -1168,16 +1163,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-26 08:41:25" itemprop="dateModified" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
               </span>
             
           
 
-          
-
-          
-            
-            
           
 
           
@@ -1269,11 +1259,8 @@
   
   </article>
 
-
     
-      
-
-  
+        
 
   
   
@@ -1346,16 +1333,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-26 08:41:25" itemprop="dateModified" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
               </span>
             
           
 
-          
-
-          
-            
-            
           
 
           
@@ -1453,11 +1435,8 @@
   
   </article>
 
-
     
-      
-
-  
+        
 
   
   
@@ -1530,16 +1509,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-26 08:41:25" itemprop="dateModified" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
               </span>
             
           
 
-          
-
-          
-            
-            
           
 
           
@@ -1678,11 +1652,8 @@
   
   </article>
 
-
     
-      
-
-  
+        
 
   
   
@@ -1755,16 +1726,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-26 08:41:25" itemprop="dateModified" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
               </span>
             
           
 
-          
-
-          
-            
-            
           
 
           
@@ -1913,11 +1879,8 @@
   
   </article>
 
-
     
-      
-
-  
+        
 
   
   
@@ -1990,16 +1953,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-26 08:41:25" itemprop="dateModified" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
               </span>
             
           
 
-          
-
-          
-            
-            
           
 
           
@@ -2074,11 +2032,8 @@
   
   </article>
 
-
     
-      
-
-  
+        
 
   
   
@@ -2151,16 +2106,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 10:09:10" itemprop="dateModified" datetime="2019-07-12T10:09:10+00:00">2019-07-12</time>
+                <time title="Modified: 2019-07-26 08:41:25" itemprop="dateModified" datetime="2019-07-26T08:41:25+00:00">2019-07-26</time>
               </span>
             
           
 
-          
-
-          
-            
-            
           
 
           
@@ -2449,7 +2399,6 @@
   
   </article>
 
-
     
   </section>
 
@@ -2484,60 +2433,80 @@
 
       <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
+
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Lsmaxs</p>
-              <div class="site-description motion-element" itemprop="description"></div>
-          </div>
+  
+  <p class="site-author-name" itemprop="name">Lsmaxs</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span>
+        
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span>
+        
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
 
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">18</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">categories</span>
-                  
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">tags</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-
-          
-          
-
           
         </div>
       </div>
@@ -2607,6 +2576,7 @@
     
 
     
+
   </div>
 
   
@@ -2626,12 +2596,14 @@
 
 
 
+
+
+
+
+
+
   
   
-
-
-
-
 
 
 
@@ -2677,44 +2649,52 @@
 
   
 
-  
 
   
 
 
 
-  
 
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
 
 
   

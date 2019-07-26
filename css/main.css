@@ -184,86 +184,20 @@ h6 {
 h1 {
   font-size: 22px;
 }
-h1 code {
-  font-size: 1em;
-}
-@media (max-width: 767px) {
-  h1 {
-    font-size: 18px;
-  }
-  h1 code {
-    font-size: 1em;
-  }
-}
 h2 {
   font-size: 20px;
-}
-h2 code {
-  font-size: 1em;
-}
-@media (max-width: 767px) {
-  h2 {
-    font-size: 16px;
-  }
-  h2 code {
-    font-size: 1em;
-  }
 }
 h3 {
   font-size: 18px;
 }
-h3 code {
-  font-size: 1em;
-}
-@media (max-width: 767px) {
-  h3 {
-    font-size: 14px;
-  }
-  h3 code {
-    font-size: 1em;
-  }
-}
 h4 {
   font-size: 16px;
-}
-h4 code {
-  font-size: 1em;
-}
-@media (max-width: 767px) {
-  h4 {
-    font-size: 12px;
-  }
-  h4 code {
-    font-size: 1em;
-  }
 }
 h5 {
   font-size: 14px;
 }
-h5 code {
-  font-size: 1em;
-}
-@media (max-width: 767px) {
-  h5 {
-    font-size: 10px;
-  }
-  h5 code {
-    font-size: 1em;
-  }
-}
 h6 {
   font-size: 12px;
-}
-h6 code {
-  font-size: 1em;
-}
-@media (max-width: 767px) {
-  h6 {
-    font-size: 8px;
-  }
-  h6 code {
-    font-size: 1em;
-  }
 }
 p {
   margin: 0 0 20px 0;
@@ -308,6 +242,9 @@ blockquote {
   padding: 0 15px;
   color: #666;
   border-left: 4px solid #ddd;
+}
+blockquote p {
+  font-family: STKaiti, KaiTi, 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 blockquote cite::before {
   content: "-";
@@ -511,7 +448,6 @@ code {
   color: #555;
   background: #eee;
   border-radius: 3px;
-  font-size: 14px;
 }
 pre {
   overflow: auto;
@@ -523,8 +459,8 @@ pre code {
   background: none;
   text-shadow: none;
 }
-.highlight {
-  border-radius: 1px;
+.highlight *::selection {
+  background: #d6d6d6;
 }
 .highlight pre {
   border: none;
@@ -598,7 +534,11 @@ pre .addition {
   background: #dfd;
 }
 pre .meta {
-  color: #8959a8;
+  color: #eab700;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 pre .comment {
   color: #8e908c;
@@ -1043,6 +983,7 @@ pre .javascript .function {
 }
 .comments {
   margin: 60px 20px 0;
+  overflow: hidden;
 }
 .back-to-top {
   box-sizing: border-box;
@@ -1062,6 +1003,9 @@ pre .javascript .function {
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
+}
+.back-to-top:hover {
+  color: #87daff;
 }
 .back-to-top.back-to-top-on {
   bottom: 19px;
@@ -1098,6 +1042,7 @@ pre .javascript .function {
   color: #fff;
   background: #222;
   border-bottom: none;
+  line-height: 22px;
 }
 .brand:hover {
   color: #fff;
@@ -1111,8 +1056,8 @@ pre .javascript .function {
 .site-title {
   display: inline-block;
   vertical-align: top;
-  line-height: 36px;
-  font-size: 20px;
+  line-height: 1.5;
+  font-size: 22px;
   font-weight: normal;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
@@ -1135,7 +1080,6 @@ pre .javascript .function {
 .site-nav-toggle {
   display: none;
   position: absolute;
-  top: 10px;
   left: 10px;
 }
 @media (max-width: 767px) {
@@ -1212,12 +1156,6 @@ pre .javascript .function {
 .post-body span.exturl .fa {
   font-size: 14px;
   margin-left: 4px;
-}
-.post-body .fancybox img {
-  display: block !important;
-  margin: 0 auto;
-  cursor: pointer;
-  cursor: zoom-in;
 }
 .post-body .image-caption,
 .post-body .figure .caption {
@@ -1529,7 +1467,7 @@ pre .javascript .function {
 .post-nav-item a {
   position: relative;
   display: block;
-  line-height: 25px;
+  line-height: 1.6;
   font-size: 14px;
   color: #555;
   border-bottom: none;
@@ -1667,7 +1605,6 @@ pre .javascript .function {
   max-width: 96px;
   height: auto;
   border: 2px solid #333;
-  opacity: 1;
 }
 .site-author-name {
   margin: 5px 0 0;
@@ -1678,7 +1615,7 @@ pre .javascript .function {
 .site-description {
   margin-top: 5px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   color: #999;
 }
 .links-of-author {
@@ -1702,7 +1639,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff42;
+  background: #5d3383;
 }
 .feed-link,
 .chat {
@@ -1719,7 +1656,6 @@ pre .javascript .function {
 .feed-link a i,
 .chat a i {
   color: #fc6423;
-  font-size: 14px;
 }
 .feed-link a:hover,
 .chat a:hover {
@@ -1842,6 +1778,9 @@ pre .javascript .function {
 .sidebar-toggle-line:first-child {
   margin-top: 0;
 }
+.sidebar-toggle:hover .sidebar-toggle-line {
+  background: #87daff;
+}
 .post-toc-empty {
   font-size: 14px;
   color: #666;
@@ -1926,10 +1865,10 @@ pre .javascript .function {
   text-align: center;
   color: inherit;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
 }
 .site-state-item-name {
-  font-size: 13px;
+  font-size: 14px;
   color: inherit;
 }
 .footer {
@@ -2007,112 +1946,6 @@ pre .javascript .function {
     transform: scale(1.1);
   }
 }
-.local-search-pop-overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 2080;
-  background-color: rgba(0,0,0,0.3);
-}
-.local-search-popup {
-  display: none;
-  position: fixed;
-  top: 10%;
-  left: 50%;
-  margin-left: -350px;
-  width: 700px;
-  height: 80%;
-  padding: 0;
-  background: #fff;
-  color: #333;
-  z-index: 9999;
-  border-radius: 5px;
-}
-@media (max-width: 767px) {
-  .local-search-popup {
-    padding: 0;
-    top: 0;
-    left: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-  }
-}
-.local-search-popup ul.search-result-list {
-  padding: 0;
-  margin: 0 5px;
-}
-.local-search-popup p.search-result {
-  border-bottom: 1px dashed #ccc;
-  padding: 5px 0;
-}
-.local-search-popup a.search-result-title {
-  font-weight: bold;
-  font-size: 16px;
-}
-.local-search-popup .search-keyword {
-  border-bottom: 1px dashed #f00;
-  font-weight: bold;
-  color: #f00;
-}
-.local-search-popup .local-search-header {
-  padding: 5px;
-  height: 36px;
-  background: #f5f5f5;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-.local-search-popup #local-search-result {
-  overflow: auto;
-  position: relative;
-  padding: 5px 25px;
-  height: calc(100% - 55px);
-}
-.local-search-popup .local-search-input-wrapper {
-  display: inline-block;
-  width: calc(100% - 90px);
-  height: 36px;
-  line-height: 36px;
-  padding: 0 5px;
-}
-.local-search-popup .local-search-input-wrapper input {
-  padding: 8px 0;
-  height: 20px;
-  display: block;
-  width: 100%;
-  outline: none;
-  border: none;
-  background: transparent;
-  vertical-align: middle;
-}
-.local-search-popup .search-icon,
-.local-search-popup .popup-btn-close {
-  display: inline-block;
-  font-size: 18px;
-  color: #999;
-  height: 36px;
-  width: 18px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.local-search-popup .search-icon {
-  float: left;
-}
-.local-search-popup .popup-btn-close {
-  border-left: 1px solid #eee;
-  float: right;
-  cursor: pointer;
-}
-.local-search-popup #no-result {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: #ccc;
-}
 .page-archive .archive-page-counter {
   position: relative;
   top: 3px;
@@ -2136,7 +1969,7 @@ pre .javascript .function {
   border-radius: 50%;
 }
 .page-archive .fa-external-link {
-  font-size: 15px;
+  font-size: 14px;
   margin-left: 5px;
 }
 .category-all-page .category-all-title {
@@ -2312,12 +2145,6 @@ pre .javascript .function {
     transform: scale(1);
   }
 }
-.page-post-detail .sidebar-toggle-line {
-  background: #87daff;
-}
-.page-post-detail .comments {
-  overflow: hidden;
-}
 ul.breadcrumb {
   list-style: none;
   margin: 1em 0;
@@ -2353,6 +2180,11 @@ ul.breadcrumb li+li:last-child {
     width: auto;
   }
 }
+@media (max-width: 767px) {
+  .header-inner {
+    padding: 50px 0 35px;
+  }
+}
 embed {
   display: block;
   margin: 0px auto 25px auto;
@@ -2365,7 +2197,6 @@ embed {
 }
 .custom-logo .site-title {
   margin: 10px auto 0;
-  font-size: 24px;
   color: #222;
 }
 .custom-logo .site-title a {
@@ -2379,9 +2210,7 @@ embed {
 }
 @media (max-width: 767px) {
   .site-nav {
-    position: absolute;
     left: 0;
-    top: 52px;
     margin: 0;
     width: 100%;
     padding: 0;
@@ -2389,6 +2218,9 @@ embed {
     border-bottom: 1px solid #ddd;
     z-index: 1030;
   }
+}
+.site-nav-toggle {
+  top: 50px;
 }
 @media (max-width: 767px) {
   .menu {
