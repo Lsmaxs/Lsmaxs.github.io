@@ -85,8 +85,23 @@ fs.open(path.join(__dirname,'1.txt'),'r',0o666,function(err,fd){
     let buf = Buffer.alloc(6);
     fs.read(fd,buf,0,6,3,function(err,bytesRead,buffer){
         console.log(bytesRead);
-       console.log(buffer===buf);
-       console.log(buf.toString());
+        console.log(buffer===buf);
+        console.log(buf.toString());
+    })
+})
+```
+
+### 写入文件
+> fs.write(fd,buffer[,offset[,length[,postion]]],callback)
+```
+const fs = require('fs');
+const path = require('path);
+fs.open(path.join(__dirname,'1.text'),'w',0o666,function(err,fd){
+    console.log(err);
+    fs.write(fd,buf,3,6,0,function(err,bttestWritten,buffer){
+        console.log(bytesRead);
+        console.log(buffer===buf);
+        console.log(buf.toString());
     })
 })
 ```
