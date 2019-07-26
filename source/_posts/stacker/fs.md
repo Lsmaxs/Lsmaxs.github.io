@@ -61,3 +61,32 @@ function copy(){
 }
 ```
 
+## 从指定位置处开始读取文件
+
+### 打开文件
+> fs.open(filename,flags,[mode],callback);
+- FileDescriptor 是文件描述符
+- FileDescriptor 可以被用来表示文件
+- in -- 标准输入(键盘)的描述符
+- out -- 标准输出(屏幕)的描述符
+- err -- 标准错误输出(屏幕)的描述符  
+
+```
+fs.open('./1,txt','r',0600,function(err,fd){});
+```
+
+### 读取文件
+> fs.read(fd,buffer,offset,length,postion.callback((err,bytesRead,buffer)))
+```
+const fs = require('fs');
+const path = require('path');
+fs.open(path.join(__dirname,'1.txt'),'r',0o666,function(err,fd){
+    console.log(err);
+    let buf = Buffer.alloc(6);
+    fs.read(fd,buf,0,6,3,function(err,bytesRead,buffer){
+        console.log(bytesRead);
+       console.log(buffer===buf);
+       console.log(buf.toString());
+    })
+})
+```
